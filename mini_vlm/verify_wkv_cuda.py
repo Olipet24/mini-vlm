@@ -11,6 +11,7 @@ script has nothing to compare).
 Usage:
     python -m mini_vlm.verify_wkv_cuda
 """
+import argparse
 import os
 
 import torch
@@ -30,7 +31,7 @@ def run_once(model: RWKVTimeMix, x: torch.Tensor, use_cuda_kernel: bool):
 
 def check(label: str, B: int, T: int, C: int, device: torch.device):
     torch.manual_seed(0)
-    model = RWKVTimeMix(n_embd=C, layer_id=0, n_layer=4).to(device)
+    model = RWKVTimeMix(n_embd=C, layer_num=0, tot_layer=4).to(device)
     x = torch.randn(B, T, C, device=device)
 
     out_cuda, xgrad_cuda, grads_cuda = run_once(model, x, use_cuda_kernel=True)
@@ -49,10 +50,17 @@ def check(label: str, B: int, T: int, C: int, device: torch.device):
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--device", default="cuda",
+        help="which CUDA device to run the check on, e.g. 'cuda:1' for the second GPU",
+    )
+    args = parser.parse_args()
+
     if not torch.cuda.is_available():
         raise SystemExit("CUDA not available -- run this on the GPU machine.")
 
-    device = torch.device("cuda")
+    device = torch.device(args.device)
     from mini_vlm.models import wkv_cuda_kernel
     if wkv_cuda_kernel._load_kernel() is None:
         raise SystemExit("WKV CUDA kernel failed to compile -- see the error above.")
