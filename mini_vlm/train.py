@@ -18,6 +18,7 @@ import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
+from tqdm import tqdm
 
 from mini_vlm.data.dataset import VQAFeatureDataset, collate
 from mini_vlm.models.baseline import LinearProjectorBaseline
@@ -147,7 +148,8 @@ def main() -> None:
     for epoch in range(1, args.epochs + 1):
         model.train()
         running_loss, seen = 0.0, 0
-        for batch in train_loader:
+        pbar = tqdm(train_loader, desc=f"[{args.model}] epoch {epoch}/{args.epochs}", leave=False)
+        for batch in pbar:
             features = batch["features"].to(device)
             question_ids = batch["question_ids"].to(device)
             answer_idx = batch["answer_idx"].to(device)
@@ -160,6 +162,7 @@ def main() -> None:
 
             running_loss += loss.item() * len(answer_idx)
             seen += len(answer_idx)
+            pbar.set_postfix(loss=running_loss / seen)
 
         train_loss = running_loss / seen
         val_loss, val_acc = evaluate(model, val_loader, device)
