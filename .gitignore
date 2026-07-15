@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+*.pyc
+.claude
+# generated data/artifacts (regenerate via mini_vlm/data/* and mini_vlm/train.py)
+# outputs/raw/
+# outputs/images/
+# outputs/features/
+# outputs/processed/
+# outputs/results/*.pt
+# outputs/results/*.png
+outputs/*
+
+# LaTeX build artifacts
+report/*.aux
+report/*.log
+report/*.out
+report/*.pdf
+report/*
+APS360_project_proposal-1.pdf
+aps360.sty
+progress_report.pdf
+template(1).tex
+# CLAUDE.md
+
