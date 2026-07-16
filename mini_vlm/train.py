@@ -173,7 +173,7 @@ def main() -> None:
                 raise SystemExit(
                     f"[{args.model}] loss went non-finite ({loss.item()}) at epoch {epoch}, "
                     f"{seen} examples in -- stopping now instead of wasting the rest of the run. "
-                    "Likely an exploding RWKV time_decay; try a lower --lr."
+                    "Try a lower --lr (and/or a longer --warmup-steps for the baseline)."
                 )
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
