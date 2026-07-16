@@ -27,6 +27,7 @@ class RWKVLanguageCore(nn.Module):
         vision_channels: int = 576,
         vision_spatial: int = 7,
         max_question_len: int = 16,
+        dropout: float = 0.1,
     ) -> None:
         super().__init__()
         self.bridge = RWKVSpatialBridge(
@@ -35,22 +36,24 @@ class RWKVLanguageCore(nn.Module):
             d_model=d_model,
             n_layer=bridge_layers,
             n_compressed_tokens=n_compressed_tokens,
+            dropout=dropout,
         )
         self.token_embed = nn.Embedding(vocab_size, d_model)
         self.pos_embed = nn.Parameter(
             torch.randn(1, n_compressed_tokens + max_question_len, d_model) * 0.02
         )
-        self.core = RWKVStack(n_embd=d_model, n_layer=core_layers)
+        self.core = RWKVStack(n_embd=d_model, n_layer=core_layers, dropout=dropout)
         self.final_norm = nn.LayerNorm(d_model)
+        self.head_drop = nn.Dropout(dropout)
         self.classifier = nn.Linear(d_model, num_answers)
-    
+
         rwkv_init(self) # initializde the embedding for the language core
 
     def forward(self, vision_features: torch.Tensor, question_ids: torch.Tensor) -> torch.Tensor:
-        visual_tokens = self.bridge(vision_features)  
-        text_tokens = self.token_embed(question_ids)  
+        visual_tokens = self.bridge(vision_features)
+        text_tokens = self.token_embed(question_ids)
         x = torch.cat([visual_tokens, text_tokens], dim=1) # would be interesting to see how we can implement this and improve using cross attention
         x = x + self.pos_embed[:, : x.size(1)]
         x = self.core(x)
         x = self.final_norm(x[:, -1])  # last token's hidden state
-        return self.classifier(x)
+        return self.classifier(self.head_drop(x))

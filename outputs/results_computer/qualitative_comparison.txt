@@ -1,0 +1,14 @@
+question                     truth        baseline (conf)        primary (conf)        
+---------------------------------------------------------------------------------------
+Are all the computers on?    yes          no (0.5893) X          yes (0.9999) OK       
+Is this a salad?             no           yes (0.6259) X         no (0.9998) OK        
+Is it safe to go?            yes          yes (0.5197) OK        no (0.8901) X         
+Is this in the shopping mall no           no (0.4949) OK         yes (0.9998) X        
+How many children?           2            1 (0.2344) X           3 (0.296) X           
+How many people have shoes o 0            0 (0.2641) OK          7 (0.3039) X          
+How many dogs are laying on  1            1 (0.2347) OK          2 (0.8788) X          
+How many noodles are in this 50           1 (0.2303) X           1 (0.4343) X          
+What color is the man's shir blue         white (0.1759) X       pink (0.2539) X       
+What is on the mountain?     snow         surfboard (0.047) X    snow (0.9942) OK      
+What color is the snow?      white        blue (0.2014) X        white (0.936) OK      
+What is the writing utensil  pen          apple (0.0288) X       suitcase (0.6749) X   

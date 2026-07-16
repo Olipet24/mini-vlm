@@ -257,7 +257,6 @@ def main() -> None:
     axes[0].legend()
 
     axes[1].plot(epochs_range, history["val_acc"], label="val accuracy", color="green")
-    axes[1].axhline(majority_acc, color="gray", linestyle="--", label="majority-class baseline")
     axes[1].set_xlabel("epoch")
     axes[1].set_ylabel("accuracy")
     axes[1].set_title(f"{args.model}: validation accuracy")

@@ -1,0 +1,242 @@
+[
+  {
+    "image_filename": "val2014/COCO_val2014_000000002164.jpg",
+    "question": "What color is the barn?",
+    "ground_truth_answer": "blue",
+    "top3_predictions": [
+      {
+        "answer": "blue",
+        "prob": 0.2256
+      },
+      {
+        "answer": "white",
+        "prob": 0.1412
+      },
+      {
+        "answer": "black",
+        "prob": 0.118
+      }
+    ],
+    "correct": true
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000110052.jpg",
+    "question": "Is the man wearing sunglasses?",
+    "ground_truth_answer": "yes",
+    "top3_predictions": [
+      {
+        "answer": "yes",
+        "prob": 0.5721
+      },
+      {
+        "answer": "no",
+        "prob": 0.4045
+      },
+      {
+        "answer": "safety",
+        "prob": 0.002
+      }
+    ],
+    "correct": true
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000512760.jpg",
+    "question": "How many red towels are shown?",
+    "ground_truth_answer": "0",
+    "top3_predictions": [
+      {
+        "answer": "1",
+        "prob": 0.2422
+      },
+      {
+        "answer": "2",
+        "prob": 0.2268
+      },
+      {
+        "answer": "0",
+        "prob": 0.1562
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000265243.jpg",
+    "question": "Is the street empty?",
+    "ground_truth_answer": "no",
+    "top3_predictions": [
+      {
+        "answer": "yes",
+        "prob": 0.5848
+      },
+      {
+        "answer": "no",
+        "prob": 0.368
+      },
+      {
+        "answer": "safety",
+        "prob": 0.0044
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000409424.jpg",
+    "question": "What color is the bow on the basket?",
+    "ground_truth_answer": "red",
+    "top3_predictions": [
+      {
+        "answer": "blue",
+        "prob": 0.1674
+      },
+      {
+        "answer": "white",
+        "prob": 0.1618
+      },
+      {
+        "answer": "brown",
+        "prob": 0.1508
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000259761.jpg",
+    "question": "Is this pizza going to taste great?",
+    "ground_truth_answer": "yes",
+    "top3_predictions": [
+      {
+        "answer": "yes",
+        "prob": 0.619
+      },
+      {
+        "answer": "no",
+        "prob": 0.2524
+      },
+      {
+        "answer": "right",
+        "prob": 0.0118
+      }
+    ],
+    "correct": true
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000181256.jpg",
+    "question": "Is someone riding the elephant?",
+    "ground_truth_answer": "yes",
+    "top3_predictions": [
+      {
+        "answer": "yes",
+        "prob": 0.7111
+      },
+      {
+        "answer": "no",
+        "prob": 0.2473
+      },
+      {
+        "answer": "safety",
+        "prob": 0.005
+      }
+    ],
+    "correct": true
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000110435.jpg",
+    "question": "Does the dog like taking a bath?",
+    "ground_truth_answer": "no",
+    "top3_predictions": [
+      {
+        "answer": "yes",
+        "prob": 0.5674
+      },
+      {
+        "answer": "no",
+        "prob": 0.4089
+      },
+      {
+        "answer": "woman",
+        "prob": 0.002
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000558013.jpg",
+    "question": "Do the hot air balloons contain people?",
+    "ground_truth_answer": "no",
+    "top3_predictions": [
+      {
+        "answer": "yes",
+        "prob": 0.5631
+      },
+      {
+        "answer": "no",
+        "prob": 0.4291
+      },
+      {
+        "answer": "parked",
+        "prob": 0.0006
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000232091.jpg",
+    "question": "Does it look like it's raining?",
+    "ground_truth_answer": "no",
+    "top3_predictions": [
+      {
+        "answer": "yes",
+        "prob": 0.6088
+      },
+      {
+        "answer": "no",
+        "prob": 0.3281
+      },
+      {
+        "answer": "safety",
+        "prob": 0.0089
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000468197.jpg",
+    "question": "How many people are surfing?",
+    "ground_truth_answer": "2",
+    "top3_predictions": [
+      {
+        "answer": "1",
+        "prob": 0.2466
+      },
+      {
+        "answer": "2",
+        "prob": 0.221
+      },
+      {
+        "answer": "4",
+        "prob": 0.1227
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000545612.jpg",
+    "question": "Is this train waiting for passengers to board?",
+    "ground_truth_answer": "yes",
+    "top3_predictions": [
+      {
+        "answer": "yes",
+        "prob": 0.6839
+      },
+      {
+        "answer": "no",
+        "prob": 0.3005
+      },
+      {
+        "answer": "safety",
+        "prob": 0.0015
+      }
+    ],
+    "correct": true
+  }
+]

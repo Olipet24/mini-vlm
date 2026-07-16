@@ -1,0 +1,242 @@
+[
+  {
+    "image_filename": "val2014/COCO_val2014_000000002164.jpg",
+    "question": "What color is the barn?",
+    "ground_truth_answer": "blue",
+    "top3_predictions": [
+      {
+        "answer": "white",
+        "prob": 0.8929
+      },
+      {
+        "answer": "green",
+        "prob": 0.0342
+      },
+      {
+        "answer": "white and brown",
+        "prob": 0.0199
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000110052.jpg",
+    "question": "Is the man wearing sunglasses?",
+    "ground_truth_answer": "yes",
+    "top3_predictions": [
+      {
+        "answer": "yes",
+        "prob": 0.8601
+      },
+      {
+        "answer": "no",
+        "prob": 0.1397
+      },
+      {
+        "answer": "microphone",
+        "prob": 0.0
+      }
+    ],
+    "correct": true
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000512760.jpg",
+    "question": "How many red towels are shown?",
+    "ground_truth_answer": "0",
+    "top3_predictions": [
+      {
+        "answer": "3",
+        "prob": 0.7632
+      },
+      {
+        "answer": "4",
+        "prob": 0.0833
+      },
+      {
+        "answer": "7",
+        "prob": 0.0591
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000265243.jpg",
+    "question": "Is the street empty?",
+    "ground_truth_answer": "no",
+    "top3_predictions": [
+      {
+        "answer": "no",
+        "prob": 1.0
+      },
+      {
+        "answer": "yes",
+        "prob": 0.0
+      },
+      {
+        "answer": "baseball",
+        "prob": 0.0
+      }
+    ],
+    "correct": true
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000409424.jpg",
+    "question": "What color is the bow on the basket?",
+    "ground_truth_answer": "red",
+    "top3_predictions": [
+      {
+        "answer": "pink",
+        "prob": 0.5956
+      },
+      {
+        "answer": "red",
+        "prob": 0.3537
+      },
+      {
+        "answer": "brown",
+        "prob": 0.014
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000259761.jpg",
+    "question": "Is this pizza going to taste great?",
+    "ground_truth_answer": "yes",
+    "top3_predictions": [
+      {
+        "answer": "no",
+        "prob": 1.0
+      },
+      {
+        "answer": "yes",
+        "prob": 0.0
+      },
+      {
+        "answer": "brown",
+        "prob": 0.0
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000181256.jpg",
+    "question": "Is someone riding the elephant?",
+    "ground_truth_answer": "yes",
+    "top3_predictions": [
+      {
+        "answer": "yes",
+        "prob": 0.9993
+      },
+      {
+        "answer": "left",
+        "prob": 0.0005
+      },
+      {
+        "answer": "police",
+        "prob": 0.0001
+      }
+    ],
+    "correct": true
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000110435.jpg",
+    "question": "Does the dog like taking a bath?",
+    "ground_truth_answer": "no",
+    "top3_predictions": [
+      {
+        "answer": "yes",
+        "prob": 0.9862
+      },
+      {
+        "answer": "no",
+        "prob": 0.0109
+      },
+      {
+        "answer": "left",
+        "prob": 0.0014
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000558013.jpg",
+    "question": "Do the hot air balloons contain people?",
+    "ground_truth_answer": "no",
+    "top3_predictions": [
+      {
+        "answer": "yes",
+        "prob": 0.9989
+      },
+      {
+        "answer": "no",
+        "prob": 0.001
+      },
+      {
+        "answer": "left",
+        "prob": 0.0
+      }
+    ],
+    "correct": false
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000232091.jpg",
+    "question": "Does it look like it's raining?",
+    "ground_truth_answer": "no",
+    "top3_predictions": [
+      {
+        "answer": "no",
+        "prob": 0.9996
+      },
+      {
+        "answer": "yes",
+        "prob": 0.0003
+      },
+      {
+        "answer": "baseball",
+        "prob": 0.0
+      }
+    ],
+    "correct": true
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000468197.jpg",
+    "question": "How many people are surfing?",
+    "ground_truth_answer": "2",
+    "top3_predictions": [
+      {
+        "answer": "2",
+        "prob": 0.7495
+      },
+      {
+        "answer": "3",
+        "prob": 0.0866
+      },
+      {
+        "answer": "5",
+        "prob": 0.0645
+      }
+    ],
+    "correct": true
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000545612.jpg",
+    "question": "Is this train waiting for passengers to board?",
+    "ground_truth_answer": "yes",
+    "top3_predictions": [
+      {
+        "answer": "no",
+        "prob": 1.0
+      },
+      {
+        "answer": "0",
+        "prob": 0.0
+      },
+      {
+        "answer": "brown",
+        "prob": 0.0
+      }
+    ],
+    "correct": false
+  }
+]

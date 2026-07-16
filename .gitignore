@@ -2,21 +2,26 @@
 __pycache__/
 *.pyc
 .claude
-# generated data/artifacts (regenerate via mini_vlm/data/* and mini_vlm/train.py)
-# outputs/raw/
-# outputs/images/
-# outputs/features/
-# outputs/processed/
-# outputs/results/*.pt
-# outputs/results/*.png
-outputs/*
 
-# LaTeX build artifacts
+# outputs/: only the huge, easily-regenerable stuff stays ignored (raw COCO
+# zips, extracted images, cached vision features, model checkpoints).
+# outputs/processed/ (dataset splits + stats + vocabs, ~1MB) and
+# outputs/results/*.json|*.txt|*.png (metrics, qualitative examples, curves)
+# are small and needed to write/reproduce the report, so they're tracked.
+outputs/raw/
+outputs/images/
+outputs/features/
+outputs/results/*.pt
+outputs/processed
+
+# report/: track the LaTeX sources, style files, and figures; ignore only
+# build artifacts.
 report/*.aux
 report/*.log
 report/*.out
 report/*.pdf
-report/*
+report/*.synctex.gz
+
 APS360_project_proposal-1.pdf
 aps360.sty
 progress_report.pdf

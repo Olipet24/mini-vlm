@@ -1,0 +1,107 @@
+\documentclass[final]{article}
+
+\usepackage{APS360}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{xcolor}
+
+\title{Mini-VLM: Technical Write-Up \\ \large Codebase Documentation, Project Status, and Rubric Mapping}
+
+\author{%
+  Oliver Petrovic \\
+  1008923042, oliver.petrovic@mail.utoronto.ca\\
+  \url{https://github.com/Olipet24/mini-vlm}\\
+}
+
+\begin{document}
+\maketitle
+\vspace{-0.4in}
+
+\textcolor{gray}{\small This document is a supplementary technical companion to
+\texttt{progress\_report.tex} (the graded course deliverable). It is not page-limited and is
+not meant for submission; it exists so a reader (or a future collaborator) can find every file,
+reproduce every result, and see exactly which rubric items are satisfied where.}
+
+\section*{Repository layout}
+
+\begin{longtable}{p{5.2cm}p{9cm}}
+\toprule
+Path & What it does \\
+\midrule
+\endhead
+\texttt{mini\_vlm/data/download\_vqa.py} & Downloads the official VQA v2.0 question/annotation JSON archives (train2014 + val2014; $\sim$43MB total). Does \emph{not} download COCO images. \\
+\texttt{mini\_vlm/data/build\_dataset.py} & Cleans the raw data: builds the top-1000 answer vocabulary from the full train2014 pool, filters examples to that vocabulary, samples the train/val/test subset, and downloads only the individual COCO images that subset references (not the full 13--19GB zip archives). Writes \texttt{train.json}, \texttt{val.json}, \texttt{test.json}, \texttt{answer\_vocab.json}, and \texttt{dataset\_stats.json}. \\
+\texttt{mini\_vlm/data/vision\_cache.py} & Runs every referenced image through the frozen, FP16-compressed MobileNetV3-Small encoder exactly once and caches the resulting $[576,7,7]$ feature tensor to disk. Training scripts only ever read these cached tensors. \\
+\texttt{mini\_vlm/data/dataset.py} & \texttt{VQAFeatureDataset}: a \texttt{torch.utils.data.Dataset} that joins a processed split's questions/answers against their cached feature tensors and tokenizes the question. \\
+\texttt{mini\_vlm/text.py} & Minimal from-scratch word-level tokenizer (\texttt{Tokenizer}) built from the training questions; no external NLP dependency. \\
+\texttt{mini\_vlm/models/vision\_encoder.py} & Frozen MobileNetV3-Small wrapper (\texttt{MobileNetV3Backbone}) plus FP16 compression (\texttt{compress\_encoder\_fp16}) and a state-dict size helper. \\
+\texttt{mini\_vlm/models/rwkv.py} & RWKV building blocks implemented from scratch: \texttt{RWKVTimeMix} (WKV linear-time recurrence, replaces attention), \texttt{RWKVChannelMix} (squared-ReLU gated FFN), and \texttt{RWKVBlock}/\texttt{RWKVStack} that compose them. Used by both the bridge and the language core. \\
+\texttt{mini\_vlm/models/bridge.py} & \texttt{RWKVSpatialBridge}: flattens the vision encoder's $7\times7$ feature map to 49 tokens, runs them through an RWKV stack, and compresses to 8 language-aligned tokens via a learned linear pooling matrix (not cross-attention). \\
+\texttt{mini\_vlm/models/language\_core.py} & \texttt{RWKVLanguageCore}: the primary model. Combines the bridge's visual tokens with question token embeddings, runs a 4-layer RWKV stack, and classifies into the 1000-way answer vocabulary. \\
+\texttt{mini\_vlm/models/baseline.py} & \texttt{LinearProjectorBaseline}: the control-group model. Same frozen vision encoder, but a plain linear projector (no compression) feeds all 49 patch tokens plus question tokens into a standard \texttt{nn.TransformerEncoder}. \\
+\texttt{mini\_vlm/train.py} & Shared training/eval entry point for both models. Builds the tokenizer, trains, evaluates on held-out test data, and writes metrics JSON, qualitative-prediction JSON, a loss/accuracy plot, and a checkpoint to \texttt{outputs/results/}. \\
+\texttt{requirements.txt} & Python dependencies (CPU-only PyTorch/torchvision + numpy/pillow/matplotlib/tqdm/requests). \\
+\texttt{report/progress\_report.tex} & The graded progress report (course template, page-limited). \\
+\texttt{report/technical\_writeup.tex} & This document. \\
+\bottomrule
+\end{longtable}
+
+\section*{How to interface with the repository}
+
+All commands assume a Python 3.10 virtual environment with \texttt{requirements.txt}
+installed (\texttt{python3.10 -m venv .venv \&\& source .venv/bin/activate \&\& pip install -r
+requirements.txt}). Run from the repository root, in order:
+
+\begin{enumerate}
+  \item \texttt{python -m mini\_vlm.data.download\_vqa} --- downloads VQA v2.0 question/annotation JSON to \texttt{outputs/raw/}.
+  \item \texttt{python -m mini\_vlm.data.build\_dataset} --- builds the top-1000 answer vocabulary, samples train/val/test (defaults: 3000/600/600; override with \texttt{-{}-n-train}, \texttt{-{}-n-val}, \texttt{-{}-n-test}), and downloads the referenced COCO images to \texttt{outputs/images/}. Writes \texttt{outputs/processed/}.
+  \item \texttt{python -m mini\_vlm.data.vision\_cache} --- caches frozen-encoder features for every referenced image to \texttt{outputs/features/}.
+  \item \texttt{python -m mini\_vlm.train -{}-model baseline -{}-epochs 30} and \texttt{python -m mini\_vlm.train -{}-model primary -{}-epochs 30} --- train each model; results land in \texttt{outputs/results/\{baseline,primary\}\_\{metrics,qualitative,curves,checkpoint\}.*}.
+\end{enumerate}
+
+Every script accepts \texttt{-{}-help} for its full flag list (paths, subset sizes, batch size,
+learning rate, seed). All training in this milestone runs on CPU by design (\texttt{torch.device("cpu")}
+is hard-coded in \texttt{train.py}); moving to GPU only requires changing that one line once
+CUDA hardware is available, since none of the custom RWKV code is CPU-specific.
+
+\section*{What has been done}
+
+\begin{itemize}
+  \item Full data pipeline: VQA v2.0 download, top-1000 answer-vocabulary construction (87.47\% coverage measured on the full 443,757-example train2014 pool), reproducible train/val/test sampling, and on-demand COCO image fetch (avoiding the $\sim$19GB full-image download).
+  \item Frozen vision encoder with verified FP16 compression (3.66MB $\to$ 1.87MB) and an offline feature cache (4{,}052 images cached as $[576,7,7]$ FP16 tensors, $\sim$606MB on disk, entirely outside the 100MB \emph{model} budget since it's training-time data, not part of the deployed model).
+  \item RWKV time-mixing and channel-mixing implemented from scratch in pure PyTorch and verified with a gradient-flow smoke test.
+  \item RWKV Spatial Bridge (49 $\to$ 8 token compression via learned pooling) and RWKV Language Core (primary model), plus the Linear+Transformer baseline, both instantiate, forward-pass, and back-propagate correctly.
+  \item Full training/eval loop with real quantitative results (loss, accuracy, majority-class-floor comparison) and real qualitative results (per-example top-3 predictions with confidence) for both models, trained end-to-end on real VQA v2.0 data.
+  \item \textbf{Deployed model size check}: primary model state dict (5.94MB) + FP16 vision encoder (1.87MB) $=$ \textbf{7.80MB total}, ${\sim}92$MB of headroom left in the 100MB budget for scaling up $d_{model}$/layer count/answer vocabulary once training moves to GPU.
+\end{itemize}
+
+\section*{What still needs to be done}
+
+\begin{itemize}
+  \item \textbf{Scale to the full dataset on GPU.} This milestone intentionally used a $\sim$4k-image CPU-scale subset to produce genuine results quickly; the final model needs the full VQA v2.0 train2014 pool and GPU compute, which will also let sequence lengths, batch size, and epoch count grow safely without multi-hour CPU runs.
+  \item \textbf{True INT8 (or GPTQ-style) quantization.} We hit a real operator-support gap doing INT8 post-training static quantization on MobileNetV3's Squeeze-and-Excite blocks in this PyTorch/torchvision build (both the default and torchvision's ``quantization-ready'' large variant failed at the quantized-conv/elementwise-multiply level). FP16 is a verified, working interim measure. Next step: either resolve the operator gap (newer PyTorch build, or FX-mode quantization) or apply GPTQ-style quantization to the RWKV core's Linear layers instead, which is a more natural fit for GPTQ than a conv backbone.
+  \item \textbf{Early stopping / best-checkpoint selection.} Current training always evaluates test performance from the final epoch's weights; the primary model's validation accuracy peaks around epoch 27 (32.2\%) and drifts slightly by epoch 30. Selecting on best validation accuracy is a small, concrete improvement.
+  \item \textbf{Hyperparameter tuning} (learning rate schedule, bridge token count $K$, RWKV layer depth/width) once GPU compute makes sweeps affordable.
+  \item \textbf{Bias/fairness analysis} on model predictions across COCO's demographic and scene categories, as flagged in the proposal's ethical considerations.
+  \item \textbf{Final blind evaluation}: submit predictions to the official VQA v2.0 test2015 evaluation server (answers not public) as the true held-out result for the final report.
+\end{itemize}
+
+\section*{Progress Report rubric mapping}
+
+\begin{longtable}{p{6.5cm}p{7.7cm}}
+\toprule
+Rubric item & Where it's satisfied \\
+\midrule
+\endhead
+Brief project description: goals, motivation, why DL is appropriate, input/output shown & \texttt{progress\_report.tex}, \emph{Introduction} + Figure 1 (\emph{Illustration}) \\
+Data processing: sources, reproducible cleaning steps, statistics, one cleaned example, plan for unseen-data testing, challenges & \emph{Data Processing} section: Table 1 (stats), Figure 2 (example), explicit train/val/test provenance + test2015 plan, challenges paragraph \\
+Baseline model: reasonable choice, easy to implement/minimal tuning, quantitative + qualitative results, challenges & \emph{Baseline Model} section: architecture description, 20.33\% test accuracy vs. majority floor, qualitative mode-collapse example \\
+Primary model: architecture reasoning, complexity (params/layers), neural-network-based, quantitative + qualitative results, challenges & \emph{Primary Model} section: bridge/core architecture, 1{,}545{,}456 params, 28.17\% test accuracy (Table 2, Figure 3), qualitative examples, WKV numerical-stability challenge \\
+\bottomrule
+\end{longtable}
+
+\end{document}

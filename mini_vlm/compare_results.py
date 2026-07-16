@@ -37,7 +37,6 @@ def main() -> None:
         axes[1].plot(epochs, m["history"]["val_acc"], label=name, color=COLORS[name])
 
     majority_acc = next(iter(metrics.values()))["majority_class_test_acc"]
-    axes[1].axhline(majority_acc, color="gray", linestyle="--", label="majority-class floor")
 
     axes[0].set_xlabel("epoch")
     axes[0].set_ylabel("validation loss")

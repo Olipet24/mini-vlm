@@ -112,26 +112,33 @@ class RWKVChannelMix(nn.Module):
 
 class RWKVBlock(nn.Module):
 
-    def __init__(self, n_embd, layer_num, tot_layer):
+    def __init__(self, n_embd, layer_num, tot_layer, dropout=0.1):
         super().__init__()
         self.timeMix = RWKVTimeMix(n_embd, layer_num, tot_layer)
         self.ln1 = nn.LayerNorm(n_embd)
         self.channelMix = RWKVChannelMix(n_embd, layer_num, tot_layer)
         self.ln2 = nn.LayerNorm(n_embd)
+        # dropped on each sublayer's output before the residual add, same
+        # placement nn.TransformerEncoderLayer uses -- the baseline gets this
+        # for free from its PyTorch default (dropout=0.1); the RWKV stack had
+        # no regularization at all until this, which was letting it overfit
+        # harder than the baseline despite being the same rough size
+        self.drop1 = nn.Dropout(dropout)
+        self.drop2 = nn.Dropout(dropout)
 
 
     def forward(self, x):
-        x = x + self.timeMix(self.ln1(x)) # residual connections as per paper
-        x = x + self.channelMix(self.ln2(x))
+        x = x + self.drop1(self.timeMix(self.ln1(x))) # residual connections as per paper
+        x = x + self.drop2(self.channelMix(self.ln2(x)))
         return x
 
 
 class RWKVStack(nn.Module):
 
-    def __init__(self, n_embd, n_layer):
+    def __init__(self, n_embd, n_layer, dropout=0.1):
         super().__init__()
         self.modelSeq = nn.Sequential(
-            *[RWKVBlock(n_embd, i, n_layer) for i in range(n_layer)]
+            *[RWKVBlock(n_embd, i, n_layer, dropout=dropout) for i in range(n_layer)]
         )
 
 

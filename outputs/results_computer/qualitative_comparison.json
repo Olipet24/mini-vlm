@@ -1,0 +1,506 @@
+[
+  {
+    "image_filename": "val2014/COCO_val2014_000000363840.jpg",
+    "question": "Are all the computers on?",
+    "answer_type": "yes/no",
+    "ground_truth_answer": "yes",
+    "predictions": {
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5893
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3766
+          },
+          {
+            "answer": "2",
+            "prob": 0.0052
+          }
+        ],
+        "correct": false
+      },
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.9999
+          },
+          {
+            "answer": "work",
+            "prob": 0.0
+          },
+          {
+            "answer": "no",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000458510.jpg",
+    "question": "Is this a salad?",
+    "answer_type": "yes/no",
+    "ground_truth_answer": "no",
+    "predictions": {
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.6259
+          },
+          {
+            "answer": "no",
+            "prob": 0.3653
+          },
+          {
+            "answer": "brown",
+            "prob": 0.0008
+          }
+        ],
+        "correct": false
+      },
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.9998
+          },
+          {
+            "answer": "0",
+            "prob": 0.0001
+          },
+          {
+            "answer": "brown",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000567118.jpg",
+    "question": "Is it safe to go?",
+    "answer_type": "yes/no",
+    "ground_truth_answer": "yes",
+    "predictions": {
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5197
+          },
+          {
+            "answer": "no",
+            "prob": 0.4684
+          },
+          {
+            "answer": "safety",
+            "prob": 0.0009
+          }
+        ],
+        "correct": true
+      },
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.8901
+          },
+          {
+            "answer": "yes",
+            "prob": 0.1097
+          },
+          {
+            "answer": "2",
+            "prob": 0.0001
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000511251.jpg",
+    "question": "Is this in the shopping mall?",
+    "answer_type": "yes/no",
+    "ground_truth_answer": "no",
+    "predictions": {
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.4949
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4882
+          },
+          {
+            "answer": "safety",
+            "prob": 0.0013
+          }
+        ],
+        "correct": true
+      },
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.9998
+          },
+          {
+            "answer": "no",
+            "prob": 0.0002
+          },
+          {
+            "answer": "left",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000240727.jpg",
+    "question": "How many children?",
+    "answer_type": "number",
+    "ground_truth_answer": "2",
+    "predictions": {
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.2344
+          },
+          {
+            "answer": "2",
+            "prob": 0.2142
+          },
+          {
+            "answer": "0",
+            "prob": 0.1568
+          }
+        ],
+        "correct": false
+      },
+      "primary": {
+        "top3": [
+          {
+            "answer": "3",
+            "prob": 0.296
+          },
+          {
+            "answer": "2",
+            "prob": 0.28
+          },
+          {
+            "answer": "7",
+            "prob": 0.2223
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000013729.jpg",
+    "question": "How many people have shoes on?",
+    "answer_type": "number",
+    "ground_truth_answer": "0",
+    "predictions": {
+      "baseline": {
+        "top3": [
+          {
+            "answer": "0",
+            "prob": 0.2641
+          },
+          {
+            "answer": "2",
+            "prob": 0.2034
+          },
+          {
+            "answer": "1",
+            "prob": 0.1978
+          }
+        ],
+        "correct": true
+      },
+      "primary": {
+        "top3": [
+          {
+            "answer": "7",
+            "prob": 0.3039
+          },
+          {
+            "answer": "3",
+            "prob": 0.158
+          },
+          {
+            "answer": "2",
+            "prob": 0.1394
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000426874.jpg",
+    "question": "How many dogs are laying on the floor?",
+    "answer_type": "number",
+    "ground_truth_answer": "1",
+    "predictions": {
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.2347
+          },
+          {
+            "answer": "2",
+            "prob": 0.2098
+          },
+          {
+            "answer": "0",
+            "prob": 0.1486
+          }
+        ],
+        "correct": true
+      },
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.8788
+          },
+          {
+            "answer": "5",
+            "prob": 0.062
+          },
+          {
+            "answer": "9",
+            "prob": 0.0321
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000366648.jpg",
+    "question": "How many noodles are in this salad?",
+    "answer_type": "number",
+    "ground_truth_answer": "50",
+    "predictions": {
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.2303
+          },
+          {
+            "answer": "2",
+            "prob": 0.2236
+          },
+          {
+            "answer": "0",
+            "prob": 0.1574
+          }
+        ],
+        "correct": false
+      },
+      "primary": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.4343
+          },
+          {
+            "answer": "0",
+            "prob": 0.3889
+          },
+          {
+            "answer": "4",
+            "prob": 0.0591
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000223241.jpg",
+    "question": "What color is the man's shirt?",
+    "answer_type": "other",
+    "ground_truth_answer": "blue",
+    "predictions": {
+      "baseline": {
+        "top3": [
+          {
+            "answer": "white",
+            "prob": 0.1759
+          },
+          {
+            "answer": "blue",
+            "prob": 0.1658
+          },
+          {
+            "answer": "brown",
+            "prob": 0.1407
+          }
+        ],
+        "correct": false
+      },
+      "primary": {
+        "top3": [
+          {
+            "answer": "pink",
+            "prob": 0.2539
+          },
+          {
+            "answer": "white and brown",
+            "prob": 0.1633
+          },
+          {
+            "answer": "red",
+            "prob": 0.1536
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000189245.jpg",
+    "question": "What is on the mountain?",
+    "answer_type": "other",
+    "ground_truth_answer": "snow",
+    "predictions": {
+      "baseline": {
+        "top3": [
+          {
+            "answer": "surfboard",
+            "prob": 0.047
+          },
+          {
+            "answer": "skiing",
+            "prob": 0.0356
+          },
+          {
+            "answer": "noon",
+            "prob": 0.0324
+          }
+        ],
+        "correct": false
+      },
+      "primary": {
+        "top3": [
+          {
+            "answer": "snow",
+            "prob": 0.9942
+          },
+          {
+            "answer": "coffee",
+            "prob": 0.0029
+          },
+          {
+            "answer": "keyboard",
+            "prob": 0.0007
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000037689.jpg",
+    "question": "What color is the snow?",
+    "answer_type": "other",
+    "ground_truth_answer": "white",
+    "predictions": {
+      "baseline": {
+        "top3": [
+          {
+            "answer": "blue",
+            "prob": 0.2014
+          },
+          {
+            "answer": "white",
+            "prob": 0.1605
+          },
+          {
+            "answer": "red",
+            "prob": 0.1145
+          }
+        ],
+        "correct": false
+      },
+      "primary": {
+        "top3": [
+          {
+            "answer": "white",
+            "prob": 0.936
+          },
+          {
+            "answer": "orange",
+            "prob": 0.0258
+          },
+          {
+            "answer": "green",
+            "prob": 0.0161
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "val2014/COCO_val2014_000000444682.jpg",
+    "question": "What is the writing utensil called?",
+    "answer_type": "other",
+    "ground_truth_answer": "pen",
+    "predictions": {
+      "baseline": {
+        "top3": [
+          {
+            "answer": "apple",
+            "prob": 0.0288
+          },
+          {
+            "answer": "pizza",
+            "prob": 0.0283
+          },
+          {
+            "answer": "sandwich",
+            "prob": 0.0205
+          }
+        ],
+        "correct": false
+      },
+      "primary": {
+        "top3": [
+          {
+            "answer": "suitcase",
+            "prob": 0.6749
+          },
+          {
+            "answer": "toilet",
+            "prob": 0.0776
+          },
+          {
+            "answer": "pen",
+            "prob": 0.0502
+          }
+        ],
+        "correct": false
+      }
+    }
+  }
+]

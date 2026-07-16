@@ -23,6 +23,7 @@ class RWKVSpatialBridge(nn.Module):
         d_model: int = 128,
         n_layer: int = 2,
         n_compressed_tokens: int = 8,
+        dropout: float = 0.1,
     ) -> None:
         super().__init__()
         self.spatial_size = spatial_size
@@ -30,7 +31,7 @@ class RWKVSpatialBridge(nn.Module):
 
         self.in_proj = nn.Linear(in_channels, d_model)
         self.pos_embed = nn.Parameter(torch.randn(1, n_tokens, d_model) * 0.02)
-        self.rwkv = RWKVStack(n_embd=d_model, n_layer=n_layer)
+        self.rwkv = RWKVStack(n_embd=d_model, n_layer=n_layer, dropout=dropout)
 
         self.n_compressed_tokens = n_compressed_tokens
         self.pool_logits = nn.Parameter(torch.randn(n_compressed_tokens, n_tokens) * 0.02)
