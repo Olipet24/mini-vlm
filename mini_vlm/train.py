@@ -101,6 +101,13 @@ def main() -> None:
         "--num-workers", type=int, default=0,
         help="DataLoader worker processes; >0 only helps once data loading is the bottleneck (i.e. on GPU)",
     )
+    parser.add_argument(
+        "--warmup-steps", type=int, default=0,
+        help="linear LR warmup over this many optimizer steps, then constant at --lr. "
+             "0 (default) disables it, matching prior runs exactly. The baseline's "
+             "post-LN nn.TransformerEncoder is prone to NaN early in training without "
+             "warmup; the RWKV primary model doesn't need it but it's harmless there too.",
+    )
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
@@ -142,6 +149,11 @@ def main() -> None:
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
     criterion = nn.CrossEntropyLoss()
+    scheduler = None
+    if args.warmup_steps > 0:
+        scheduler = torch.optim.lr_scheduler.LambdaLR(
+            optimizer, lambda step: min((step + 1) / args.warmup_steps, 1.0)
+        )
 
     history = {"train_loss": [], "val_loss": [], "val_acc": []}
     start = time.time()
@@ -157,8 +169,17 @@ def main() -> None:
             optimizer.zero_grad()
             logits = model(features, question_ids)
             loss = criterion(logits, answer_idx)
+            if not torch.isfinite(loss):
+                raise SystemExit(
+                    f"[{args.model}] loss went non-finite ({loss.item()}) at epoch {epoch}, "
+                    f"{seen} examples in -- stopping now instead of wasting the rest of the run. "
+                    "Likely an exploding RWKV time_decay; try a lower --lr."
+                )
             loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
             optimizer.step()
+            if scheduler is not None:
+                scheduler.step()
 
             running_loss += loss.item() * len(answer_idx)
             seen += len(answer_idx)
