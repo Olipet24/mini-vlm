@@ -1,7 +1,12 @@
 # On the CPU-only dev machine, install with:
 #   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
-# On a CUDA GPU box, install as-is (default PyPI wheels are CUDA-enabled) --
-# do NOT pass the /whl/cpu index there, it silently gives you CPU-only torch.
+#
+# On a CUDA GPU box, the plain default install can grab a torch build compiled
+# against a newer CUDA runtime than your driver supports (e.g. driver 550.120
+# / CUDA 12.4 max, but default pip install torch pulled a cu130 build --
+# torch.cuda.is_available() then silently returns False). Check `nvidia-smi`'s
+# "CUDA Version" ceiling first, then install a matching build explicitly, e.g.:
+#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu124
 torch>=2.4
 torchvision>=0.19
 numpy
@@ -9,3 +14,4 @@ pillow
 matplotlib
 tqdm
 requests
+ninja  # required by torch.utils.cpp_extension.load to JIT-compile the WKV CUDA kernel (mini_vlm/models/wkv_cuda_kernel.py)

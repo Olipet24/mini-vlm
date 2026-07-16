@@ -20,6 +20,7 @@ Usage:
 import argparse
 import json
 import random
+import shutil
 import zipfile
 from collections import Counter
 from pathlib import Path
@@ -57,19 +58,30 @@ def download_file(url: str, dest: Path) -> None:
 def download_and_extract_images(images_dir: Path, subdirs) -> None:
     """COCO's train2014.zip/val2014.zip each extract into a top-level
     train2014/ or val2014/ folder, matching the subdir/COCO_subdir_id.jpg
-    layout the rest of the pipeline (vision_cache.py, dataset.py) expects."""
+    layout the rest of the pipeline (vision_cache.py, dataset.py) expects.
+
+    Extraction goes into a scratch dir first, moved into place only once it
+    fully succeeds -- an interrupted extractall() (killed process, dropped
+    SSH session, full disk) must never leave a partial `train2014/` behind
+    that a later run would mistake for "already extracted"."""
     zips_dir = images_dir / "zips"
     for subdir in subdirs:
         extracted = images_dir / subdir
-        if extracted.exists() and any(extracted.iterdir()):
+        if extracted.exists():
             print(f"[skip] {subdir} images already extracted")
             continue
         url = IMAGE_ZIPS[subdir]
         zip_path = zips_dir / Path(url).name
         download_file(url, zip_path)
         print(f"Extracting {zip_path.name} (this can take a while)...")
+        tmp_extract_dir = images_dir / f".{subdir}.extracting"
+        if tmp_extract_dir.exists():
+            shutil.rmtree(tmp_extract_dir)
+        tmp_extract_dir.mkdir(parents=True)
         with zipfile.ZipFile(zip_path) as zf:
-            zf.extractall(images_dir)
+            zf.extractall(tmp_extract_dir)
+        (tmp_extract_dir / subdir).rename(extracted)
+        shutil.rmtree(tmp_extract_dir)
 
 
 def main() -> None:
