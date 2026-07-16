@@ -138,6 +138,13 @@ def main() -> None:
         pin_memory=device.type == "cuda",
         persistent_workers=args.num_workers > 0,
     )
+    if args.num_workers > 0 and device.type == "cuda":
+        # Workers are forked lazily on first iteration, by which point the
+        # main process already has a CUDA context open (model.to(device)
+        # below) -- forking a process with an open CUDA context is unsafe
+        # and can segfault a worker partway through training. Spawning
+        # instead gives each worker a clean process that never inherits it.
+        loader_kwargs["multiprocessing_context"] = "spawn"
     train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, **loader_kwargs)
     val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, **loader_kwargs)
     test_loader = DataLoader(test_ds, batch_size=args.batch_size, shuffle=False, **loader_kwargs)
