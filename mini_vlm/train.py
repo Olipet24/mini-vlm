@@ -57,7 +57,7 @@ def evaluate(model, loader, device):
     return total_loss / total, correct / total
 
 
-def collect_qualitative(model, loader, tokenizer, answer_vocab, device, n_samples=12):
+def collect_qualitative(model, loader, git, answer_vocab, device, n_samples=12):
     model.eval()
     samples = []
     with torch.no_grad():
@@ -170,10 +170,22 @@ def main() -> None:
             logits = model(features, question_ids)
             loss = criterion(logits, answer_idx)
             if not torch.isfinite(loss):
+                with torch.no_grad():
+                    bad = torch.nonzero(~torch.isfinite(logits).all(dim=-1)).flatten().tolist()
+                    print(f"\n[{args.model}] {len(bad)}/{len(answer_idx)} examples in this batch "
+                          f"have non-finite logits:")
+                    for i in bad[:5]:
+                        feat = features[i]
+                        print(
+                            f"  image={batch['image_filename'][i]!r} question={batch['question'][i]!r} "
+                            f"answer={batch['answer'][i]!r} feat[min={feat.min().item():.4g} "
+                            f"max={feat.max().item():.4g} mean={feat.mean().item():.4g} "
+                            f"has_nan={torch.isnan(feat).any().item()} has_inf={torch.isinf(feat).any().item()}]"
+                        )
                 raise SystemExit(
                     f"[{args.model}] loss went non-finite ({loss.item()}) at epoch {epoch}, "
                     f"{seen} examples in -- stopping now instead of wasting the rest of the run. "
-                    "Try a lower --lr (and/or a longer --warmup-steps for the baseline)."
+                    "See per-example diagnostics above."
                 )
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
