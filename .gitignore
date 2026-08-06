@@ -27,7 +27,7 @@ outputs/sweeps/**/logs/
 report/*.aux
 report/*.log
 report/*.out
-report/*.pdf
+# report/*.pdf
 report/*.synctex.gz
 
 APS360_project_proposal-1.pdf
