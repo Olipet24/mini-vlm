@@ -9,6 +9,8 @@ linear-time RWKV over 8+Tq tokens.
 import torch
 import torch.nn as nn
 
+from mini_vlm.models.pooling import pool_readout
+
 
 class LinearProjectorBaseline(nn.Module):
     def __init__(
@@ -21,22 +23,28 @@ class LinearProjectorBaseline(nn.Module):
         vision_channels: int = 576,
         vision_spatial: int = 7,
         max_question_len: int = 16,
+        dropout: float = 0.1,
+        pool: str = "last",
+        pad_id: int = 0,
     ) -> None:
         super().__init__()
         n_patch_tokens = vision_spatial * vision_spatial
+        self.n_patch_tokens = n_patch_tokens
+        self.pool = pool
+        self.pad_id = pad_id
         self.visual_proj = nn.Linear(vision_channels, d_model) # MLP resampling of vision vectors
         self.token_embed = nn.Embedding(vocab_size, d_model) # learned embeddings for text
-        self.pos_embed = nn.Parameter( 
+        self.pos_embed = nn.Parameter(
             torch.randn(1, n_patch_tokens + max_question_len, d_model) * 0.02
         ) # learned vector that embeds positional knowledge into the vectors, so that transformer can have concept of word position
         encoder_layer = nn.TransformerEncoderLayer(
             d_model=d_model, nhead=n_head, dim_feedforward=4 * d_model,
-            batch_first=True, norm_first=True,
+            batch_first=True, norm_first=True, dropout=dropout,
         ) # pre-LN (norm before each sublayer, not after) -- far more resistant to the
         # mid-training activation-magnitude blowups (loss spikes) that the default
         # post-LN layout is prone to when trained from scratch at a non-tiny LR
         self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=n_layer) # stacks of transformer layers/blocks
-        self.final_norm = nn.LayerNorm(d_model) 
+        self.final_norm = nn.LayerNorm(d_model)
         self.classifier = nn.Linear(d_model, num_answers) # final MLP head that gives the final answer of the classification
 
     def forward(self, vision_features: torch.Tensor, question_ids: torch.Tensor) -> torch.Tensor:
@@ -44,7 +52,8 @@ class LinearProjectorBaseline(nn.Module):
         visual_tokens = self.visual_proj(vision_features.flatten(2).transpose(1, 2))  # [B, H*W, d_model]
         text_tokens = self.token_embed(question_ids)  # [B, Tq, d_model]
         x = torch.cat([visual_tokens, text_tokens], dim=1) # naive concatenation of the vision and text tokens, good for baseline
-        x = x + self.pos_embed[:, : x.size(1)] # adding in the learned position embeddings 
+        x = x + self.pos_embed[:, : x.size(1)] # adding in the learned position embeddings
         x = self.transformer(x)
-        x = self.final_norm(x[:, -1]) # flattens the vector to apply layerNorm
+        readout = pool_readout(x, question_ids, self.n_patch_tokens, self.pool, self.pad_id)
+        x = self.final_norm(readout)
         return self.classifier(x)

@@ -22,7 +22,16 @@ _CUDA_DIR = os.path.join(os.path.dirname(__file__), "cuda")
 # and the language core's n_compressed_tokens + max_question_len = 8 + 16 = 24
 # (RWKVLanguageCore). 64 leaves headroom for both without wasting much of
 # the backward kernel's per-thread local `F y[Tmax], z[Tmax], zexp[Tmax]`.
-T_MAX = 64
+#
+# Overridable via MINI_VLM_WKV_T_MAX for the long-T efficiency benchmark
+# (report/final_report_v2.tex Discussion) -- normal training never sets this
+# env var, so real runs always get exactly 64. The compiled kernel's cache
+# name includes T_MAX so switching between a 64-compiled kernel (training)
+# and e.g. a 1024-compiled one (benchmark) in the same environment can't
+# silently reuse a stale .so keyed only by a constant module name --
+# torch.utils.cpp_extension.load's caching/rebuild-detection is keyed by
+# `name`, not reliably by extra_cuda_cflags changes alone.
+T_MAX = int(os.environ.get("MINI_VLM_WKV_T_MAX", "64"))
 
 _kernel = None
 _load_failed = False
@@ -36,7 +45,7 @@ def _load_kernel():
         from torch.utils.cpp_extension import load
 
         _kernel = load(
-            name="mini_vlm_wkv",
+            name=f"mini_vlm_wkv_t{T_MAX}",
             sources=[
                 os.path.join(_CUDA_DIR, "wkv_op.cpp"),
                 os.path.join(_CUDA_DIR, "wkv_cuda.cu"),

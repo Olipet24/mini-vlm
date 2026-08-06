@@ -4,15 +4,23 @@ __pycache__/
 .claude
 
 # outputs/: only the huge, easily-regenerable stuff stays ignored (raw COCO
-# zips, extracted images, cached vision features, model checkpoints).
-# outputs/processed/ (dataset splits + stats + vocabs, ~1MB) and
-# outputs/results/*.json|*.txt|*.png (metrics, qualitative examples, curves)
-# are small and needed to write/reproduce the report, so they're tracked.
+# zips, extracted images, cached vision features, model checkpoints, and the
+# large per-example split JSONs, all deterministically regenerable from
+# data/build_dataset_full.py at --seed 360). Small metrics/stats/vocab/config
+# JSON, qualitative txt, and curve/summary PNGs are tracked since they're
+# needed to write/reproduce the report. Covers both the original _full-less
+# names and the _full-suffixed full-scale dataset dirs in current use.
 outputs/raw/
 outputs/images/
+outputs/images_full/
 outputs/features/
-outputs/results/*.pt
+outputs/features_full/
 outputs/processed
+outputs/processed_full/train.json
+outputs/processed_full/val.json
+outputs/processed_full/test.json
+outputs/**/*.pt
+outputs/sweeps/**/logs/
 
 # report/: track the LaTeX sources, style files, and figures; ignore only
 # build artifacts.
