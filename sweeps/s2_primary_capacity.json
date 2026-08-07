@@ -1,0 +1,44 @@
+{
+  "name": "s2_primary_capacity",
+  "_purpose": "Primary-model capacity/bottleneck ablation, run AFTER s1 -- before launching, edit 'dropout'/'weight-decay' (and 'pool', from s0) below to the winning s1 config. n_compressed_tokens is the 49->K bridge bottleneck directly implicated in the primary model's weaker 'other'-type accuracy; the K-vs-accuracy curve is a Quantitative Results figure regardless of which K wins. core_layers/bridge_layers/d_model are one-axis-at-a-time bumps into the project's ~86MB of unused size budget. [UPDATED: S1 winner was dropout=0.2, weight-decay=0.01 (zero overfit gap at 12 epochs) -- dropout already set here.]",
+  "base": {
+    "model": "primary",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 12,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "seed": 360,
+    "skip-test": true,
+    "pool": "last",
+    "dropout": 0.2,
+    "weight-decay": 0.01
+  },
+  "runs": [
+    {
+      "run-name": "p_k4",
+      "n-compressed-tokens": 4
+    },
+    {
+      "run-name": "p_k8",
+      "n-compressed-tokens": 8
+    },
+    {
+      "run-name": "p_k16",
+      "n-compressed-tokens": 16
+    },
+    {
+      "run-name": "p_core6",
+      "core-layers": 6
+    },
+    {
+      "run-name": "p_bridge3",
+      "bridge-layers": 3
+    },
+    {
+      "run-name": "p_dmodel192",
+      "d-model": 192
+    }
+  ]
+}

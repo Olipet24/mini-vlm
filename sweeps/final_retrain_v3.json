@@ -1,0 +1,29 @@
+{
+  "name": "final_retrain_v3",
+  "_purpose": "Final reported primary numbers, v3: winning config from the Part 2 extended search (s7_round_a + s8_round_b): dropout=0.15, weight-decay=0.01, K=16, pool=last, lr=1e-3, word-dropout-prob=0.15, token-order=question_first. Beat every prior config on validation loss/accuracy (val_loss=1.5504, val_acc=0.4866, vs v2 winner's 1.5629/0.4786). 3 seeds for mean+-std. NOT re-running baseline (unchanged, already tuned in final_retrain.json) or the blind ablation. NO --skip-test -- test set touched exactly once here.",
+  "base": {
+    "model": "primary",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "dropout": 0.15,
+    "weight-decay": 0.01,
+    "n-compressed-tokens": 16,
+    "pool": "last",
+    "lr": 0.001,
+    "word-dropout-prob": 0.15,
+    "token-order": "question_first"
+  },
+  "runs": [
+    {"run-name": "primary_v3_seed360", "seed": 360},
+    {"run-name": "primary_v3_seed361", "seed": 361},
+    {"run-name": "primary_v3_seed362", "seed": 362}
+  ]
+}

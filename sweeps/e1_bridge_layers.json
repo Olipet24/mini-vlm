@@ -1,0 +1,32 @@
+{
+  "name": "e1_bridge_layers",
+  "_purpose": "Phase 1a of the expanded accuracy-improvement round: sweep --bridge-layers (zero new code, already a CLI flag) on top of final_retrain_v3's winning config (dropout=0.15, K=16, token-order=question_first, word-dropout=0.15, lr=1e-3, wd=0.01). Use checkpoint_val_acc (the corrected, newly-added metrics field -- NOT best_val_acc, which was discovered to be the historical max across epochs rather than the actual restored checkpoint's value) for triage. Control (bridge-layers=2) vs deeper bridges.",
+  "base": {
+    "model": "primary",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "skip-test": true,
+    "seed": 360,
+    "dropout": 0.15,
+    "weight-decay": 0.01,
+    "n-compressed-tokens": 16,
+    "pool": "last",
+    "lr": 0.001,
+    "word-dropout-prob": 0.15,
+    "token-order": "question_first"
+  },
+  "runs": [
+    {"run-name": "e1_bridge_layers_2", "bridge-layers": 2},
+    {"run-name": "e1_bridge_layers_3", "bridge-layers": 3},
+    {"run-name": "e1_bridge_layers_4", "bridge-layers": 4},
+    {"run-name": "e1_bridge_layers_6", "bridge-layers": 6}
+  ]
+}

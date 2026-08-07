@@ -1,0 +1,24 @@
+{
+  "name": "e10_resolution_confirm",
+  "_purpose": "3-seed confirmation of e10_resolution's single-seed win (primary_320 val_acc=0.4838 vs 0.4782 control, beating baseline_320=0.4780) before promoting to Phase 6. Seed 360 already done in e10_resolution (e10_primary_320/e10_baseline_320); this adds 361/362.",
+  "base": {
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full_320",
+    "vision-spatial": 10,
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "skip-test": true
+  },
+  "runs": [
+    {"run-name": "e10_primary_320_seed361", "model": "primary", "seed": 361, "dropout": 0.15, "weight-decay": 0.01, "n-compressed-tokens": 16, "pool": "last", "lr": 0.001, "word-dropout-prob": 0.15, "token-order": "question_first"},
+    {"run-name": "e10_primary_320_seed362", "model": "primary", "seed": 362, "dropout": 0.15, "weight-decay": 0.01, "n-compressed-tokens": 16, "pool": "last", "lr": 0.001, "word-dropout-prob": 0.15, "token-order": "question_first"},
+    {"run-name": "e10_baseline_320_seed361", "model": "baseline", "seed": 361, "lr": 0.001},
+    {"run-name": "e10_baseline_320_seed362", "model": "baseline", "seed": 362, "lr": 0.001}
+  ]
+}

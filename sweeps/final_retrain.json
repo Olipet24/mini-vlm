@@ -1,0 +1,25 @@
+{
+  "name": "final_retrain",
+  "_purpose": "Final reported numbers. Uses each model's winning sweep config (primary: dropout=0.2, weight-decay=0.01, n-compressed-tokens=16, pool=last, from s1+s2; baseline: lr=1e-3, dropout=0.1, weight-decay=0.01 default, pool=last, from s0+s3). batch-size=128/num-workers=0 kept from the sweep for consistency with the tuned lr values (both models share the same batch size, so the primary-vs-baseline comparison stays fair even though it differs from the progress report's batch=32). 3 seeds per model for mean+-std; NO --skip-test here -- this is the first and only test-set evaluation. Includes one single-seed blind-ablation run (question-only floor) for the report's Discussion/Ethics numbers.",
+  "base": {
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss"
+  },
+  "runs": [
+    {"run-name": "primary_seed360", "model": "primary", "seed": 360, "dropout": 0.2, "weight-decay": 0.01, "n-compressed-tokens": 16, "pool": "last"},
+    {"run-name": "primary_seed361", "model": "primary", "seed": 361, "dropout": 0.2, "weight-decay": 0.01, "n-compressed-tokens": 16, "pool": "last"},
+    {"run-name": "primary_seed362", "model": "primary", "seed": 362, "dropout": 0.2, "weight-decay": 0.01, "n-compressed-tokens": 16, "pool": "last"},
+    {"run-name": "baseline_seed360", "model": "baseline", "seed": 360, "lr": 0.001, "pool": "last"},
+    {"run-name": "baseline_seed361", "model": "baseline", "seed": 361, "lr": 0.001, "pool": "last"},
+    {"run-name": "baseline_seed362", "model": "baseline", "seed": 362, "lr": 0.001, "pool": "last"},
+    {"run-name": "primary_blind", "model": "primary", "seed": 360, "dropout": 0.2, "weight-decay": 0.01, "n-compressed-tokens": 16, "pool": "last", "ablate-vision": true}
+  ]
+}

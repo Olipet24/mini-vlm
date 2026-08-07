@@ -1,0 +1,24 @@
+{
+  "name": "e5_adapter_baseline",
+  "_purpose": "Phase 1e, baseline side (fairness mirror of e5_adapter_primary.json): cache-compatible feature adapter.",
+  "base": {
+    "model": "baseline",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "skip-test": true,
+    "seed": 360,
+    "lr": 0.001
+  },
+  "runs": [
+    {"run-name": "e5_baseline_adapter_affine", "feature-adapter": "affine"},
+    {"run-name": "e5_baseline_adapter_conv1x1", "feature-adapter": "conv1x1"}
+  ]
+}

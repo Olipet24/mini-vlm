@@ -1,0 +1,34 @@
+{
+  "name": "s8_round_b",
+  "_purpose": "Round B: finer-resolution grid around the new best base (s7_token_order_qfirst: dropout=0.2, wd=0.01, K=16, pool=last, lr=1e-3, word-dropout=0.15, token-order=question_first -- val_loss=1.5619/val_acc=0.4822). Round A conclusively won on token-order; label-smoothing and pool rechecks lost. Trimmed to 6 highest-value configs (lr bracket + word-dropout finer grid + dropout finer grid) given the Part 2 time backstop. Current best to beat: val_acc=0.4822. Target: val_acc >= ~0.49-0.50 for a 'substantial' win.",
+  "base": {
+    "model": "primary",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "skip-test": true,
+    "seed": 360,
+    "dropout": 0.2,
+    "weight-decay": 0.01,
+    "n-compressed-tokens": 16,
+    "pool": "last",
+    "lr": 0.001,
+    "word-dropout-prob": 0.15,
+    "token-order": "question_first"
+  },
+  "runs": [
+    {"run-name": "s8_lr_5e4", "lr": 0.0005},
+    {"run-name": "s8_lr_2e3", "lr": 0.002},
+    {"run-name": "s8_worddrop_010", "word-dropout-prob": 0.10},
+    {"run-name": "s8_worddrop_025", "word-dropout-prob": 0.25},
+    {"run-name": "s8_dropout_015", "dropout": 0.15},
+    {"run-name": "s8_dropout_030", "dropout": 0.30}
+  ]
+}

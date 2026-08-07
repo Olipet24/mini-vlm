@@ -1,0 +1,69 @@
+% Every number cited in final_report.tex prose is defined here, sourced from
+% a specific logged file, so the report can never drift from the underlying
+% JSON. FINAL (not provisional) as of the 3-seed final retrain + blind
+% ablation in outputs/results_final/. Only the new-data (Tier 2) macros
+% remain TBD, pending the user's own collected photos -- see
+% /home/olipet24/.claude/plans/vectorized-sprouting-shore.md Phase F.
+%
+% Headline checkpoints for qualitative work / single-run figures: seed 360.
+% Test acc/loss reported in prose and Table 1 are 3-seed means (seeds
+% 360/361/362); per-type breakdown and confidence stats are from the
+% seed-360 checkpoint specifically (outputs/results_final/*_seed360_test_analysis.json).
+
+% -- baseline (source: outputs/results_final/baseline_seed{360,361,362}_metrics.json) --
+\newcommand{\baselineParams}{2{,}574{,}696}
+\newcommand{\baselineSize}{9.84MB}
+\newcommand{\baselineTestAcc}{47.43\%}
+\newcommand{\baselineTestAccStd}{0.44\%}
+\newcommand{\baselineTestLoss}{1.60}
+\newcommand{\baselineAccYN}{58.19\%}
+\newcommand{\baselineAccOther}{43.23\%}
+\newcommand{\baselineAccNum}{29.84\%}
+\newcommand{\baselineTunedDropout}{0.1 (default)}
+\newcommand{\baselineTunedWeightDecay}{0.01 (default)}
+\newcommand{\baselineTunedLR}{$1{\times}10^{-3}$}
+
+% -- primary (source: outputs/results_final/primary_seed{360,361,362}_metrics.json) --
+\newcommand{\primaryParams}{3{,}071{,}096}
+\newcommand{\primarySize}{11.76MB}
+\newcommand{\primaryTotalSize}{13.63MB}
+\newcommand{\primaryTestAcc}{45.76\%}
+\newcommand{\primaryTestAccStd}{0.31\%}
+\newcommand{\primaryTestLoss}{1.64}
+\newcommand{\primaryAccYN}{58.00\%}
+\newcommand{\primaryAccOther}{39.45\%}
+\newcommand{\primaryAccNum}{28.95\%}
+\newcommand{\primaryTunedDropout}{0.2}
+\newcommand{\primaryTunedWeightDecay}{0.01 (default)}
+\newcommand{\primaryTunedK}{16}
+\newcommand{\primaryTunedPool}{last (default; \texttt{last\_real} tested, did not help)}
+
+% -- floors / ablations (source: outputs/results_final/primary_blind_metrics.json, test split) --
+\newcommand{\majorityFloor}{21.84\%}
+\newcommand{\blindFloor}{37.94\%}
+
+% -- confidence calibration (source: *_seed360_test_analysis.json) --
+\newcommand{\baselineConfCorrect}{0.63}
+\newcommand{\baselineConfIncorrect}{0.48}
+\newcommand{\primaryConfCorrect}{0.61}
+\newcommand{\primaryConfIncorrect}{0.45}
+
+% -- efficiency (source: outputs/results_final/efficiency.json, batch=32, Tq=16) --
+\newcommand{\primaryLatencyMs}{3.4ms}
+\newcommand{\baselineLatencyMs}{1.3ms}
+
+% -- new data (source: outputs/results_new_data/new_data_summary.json; BLOCKED on user photos) --
+\newcommand{\newDataN}{TBD}
+\newcommand{\newDataBaselineAcc}{TBD}
+\newcommand{\newDataBaselineCI}{TBD}
+\newcommand{\newDataPrimaryAcc}{TBD}
+\newcommand{\newDataPrimaryCI}{TBD}
+\newcommand{\newDataMajorityFloor}{TBD}
+
+% -- misc --
+\newcommand{\testSetSize}{186{,}489}
+\newcommand{\testSetYN}{80{,}539}
+\newcommand{\testSetOther}{80{,}930}
+\newcommand{\testSetNum}{25{,}020}
+\newcommand{\trainPoolSize}{368{,}751}
+\newcommand{\vocabCoverage}{87.47\%}

@@ -1,0 +1,28 @@
+{
+  "name": "s5_regularization",
+  "_purpose": "Cheap, cache-compatible regularization test (feature noise on cached vision features + question word-dropout), targeting the same overfitting problem as dropout/weight-decay but via a different mechanism. Base config matches the current best primary (dropout=0.2, wd=0.01, K=16, batch=128, lr=3e-3). Feature std measured at ~1.47 over a 200-image sample, so noise-std 0.15/0.4 are roughly 10%/27% of feature std -- mild vs. fairly aggressive.",
+  "base": {
+    "model": "primary",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "seed": 360,
+    "dropout": 0.2,
+    "weight-decay": 0.01,
+    "n-compressed-tokens": 16,
+    "pool": "last"
+  },
+  "runs": [
+    {"run-name": "reg_noise_mild", "feature-noise-std": 0.15},
+    {"run-name": "reg_noise_strong", "feature-noise-std": 0.4},
+    {"run-name": "reg_worddrop", "word-dropout-prob": 0.15},
+    {"run-name": "reg_both", "feature-noise-std": 0.15, "word-dropout-prob": 0.15}
+  ]
+}

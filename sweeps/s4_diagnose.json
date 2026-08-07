@@ -1,0 +1,29 @@
+{
+  "name": "s4_diagnose",
+  "_purpose": "Follow-up diagnostics after the final 3-seed retrain showed the tuned primary (dropout=0.2, K=16, batch=128) underperforming the original untuned primary (45.76% vs 46.70%), despite winning the 12-epoch/single-seed validation search. Each run isolates one hypothesis: (1) batch-size confound, (2) untested lr for primary, (3) extending the K trend past 16, (4) checkpoint-selection criterion, (5) capacity+regularization combined.",
+  "base": {
+    "model": "primary",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "seed": 360,
+    "dropout": 0.2,
+    "weight-decay": 0.01,
+    "n-compressed-tokens": 16,
+    "pool": "last",
+    "batch-size": 128
+  },
+  "runs": [
+    {"run-name": "diag_bs32_isolate", "batch-size": 32, "lr": 0.003},
+    {"run-name": "diag_lr1e-3", "lr": 0.001},
+    {"run-name": "diag_k32", "n-compressed-tokens": 32},
+    {"run-name": "diag_valacc_select", "select-metric": "val_acc"},
+    {"run-name": "diag_capacity_reg", "d-model": 192, "dropout": 0.3}
+  ]
+}

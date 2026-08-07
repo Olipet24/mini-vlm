@@ -1,0 +1,32 @@
+{
+  "name": "e11_question_cond",
+  "_purpose": "Co-attention discussion follow-up: does making the bridge's pooling weights a function of the question (instead of static/question-blind) help, as a linear-time non-attention approximation of co-attention's question-relevance signal? Built on top of the v4 (320px) final primary config -- the current best. Primary-only architectural lever (like bridge-layers/multi-head-pool/global-token) -- not mirrored to baseline per the fairness rule (baseline's Transformer already implicitly attends question<->all-tokens). Control = e10_resolution_confirm's existing primary_320 seed360/361/362 results (0.4838/0.4798 mean, ledger), reused, not rerun.",
+  "base": {
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full_320",
+    "vision-spatial": 10,
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "skip-test": true,
+    "model": "primary",
+    "dropout": 0.15,
+    "weight-decay": 0.01,
+    "n-compressed-tokens": 16,
+    "pool": "last",
+    "lr": 0.001,
+    "word-dropout-prob": 0.15,
+    "token-order": "question_first",
+    "bridge-question-cond": true
+  },
+  "runs": [
+    {"run-name": "e11_qcond_seed360", "seed": 360},
+    {"run-name": "e11_qcond_seed361", "seed": 361},
+    {"run-name": "e11_qcond_seed362", "seed": 362}
+  ]
+}

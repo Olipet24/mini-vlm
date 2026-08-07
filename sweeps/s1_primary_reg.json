@@ -1,0 +1,60 @@
+{
+  "name": "s1_primary_reg",
+  "_purpose": "Primary-model regularization grid, targeting the confirmed overfitting (val loss bottoms ~epoch 5, climbs to 1.85 by epoch 10 in outputs/results_full/primary_metrics.json). Uses --pool last (S0's winner should be substituted here as 'pool' in base once S0 finishes, if last_real or mean wins).",
+  "base": {
+    "model": "primary",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 12,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "seed": 360,
+    "skip-test": true,
+    "pool": "last"
+  },
+  "runs": [
+    {
+      "run-name": "p_d0.1_wd0.01",
+      "dropout": 0.1,
+      "weight-decay": 0.01
+    },
+    {
+      "run-name": "p_d0.1_wd0.1",
+      "dropout": 0.1,
+      "weight-decay": 0.1
+    },
+    {
+      "run-name": "p_d0.2_wd0.01",
+      "dropout": 0.2,
+      "weight-decay": 0.01
+    },
+    {
+      "run-name": "p_d0.2_wd0.1",
+      "dropout": 0.2,
+      "weight-decay": 0.1
+    },
+    {
+      "run-name": "p_d0.3_wd0.01",
+      "dropout": 0.3,
+      "weight-decay": 0.01
+    },
+    {
+      "run-name": "p_d0.3_wd0.1",
+      "dropout": 0.3,
+      "weight-decay": 0.1
+    },
+    {
+      "run-name": "p_d0.2_wd0.01_lr1e-3",
+      "dropout": 0.2,
+      "weight-decay": 0.01,
+      "lr": 0.001
+    },
+    {
+      "run-name": "p_d0.2_wd0.01_ls0.1",
+      "dropout": 0.2,
+      "weight-decay": 0.01,
+      "label-smoothing": 0.1
+    }
+  ]
+}

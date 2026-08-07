@@ -1,0 +1,24 @@
+{
+  "name": "e9_vocab",
+  "_purpose": "Phase 3: wider answer vocabulary (top-2000/3000 vs the current top-1000) -- shared/fairness lever, same processed-dir swap applied identically to both models. Compare primary-vs-baseline WITHIN each vocab size, not raw magnitude across sizes (more classes = harder classification but less discarded training signal).",
+  "base": {
+    "processed-dir": "outputs/processed_full_v2000",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "skip-test": true,
+    "seed": 360
+  },
+  "runs": [
+    {"run-name": "e9_primary_v2000", "model": "primary", "dropout": 0.15, "weight-decay": 0.01, "n-compressed-tokens": 16, "pool": "last", "lr": 0.001, "word-dropout-prob": 0.15, "token-order": "question_first"},
+    {"run-name": "e9_baseline_v2000", "model": "baseline", "lr": 0.001},
+    {"run-name": "e9_primary_v3000", "model": "primary", "processed-dir": "outputs/processed_full_v3000", "dropout": 0.15, "weight-decay": 0.01, "n-compressed-tokens": 16, "pool": "last", "lr": 0.001, "word-dropout-prob": 0.15, "token-order": "question_first"},
+    {"run-name": "e9_baseline_v3000", "model": "baseline", "processed-dir": "outputs/processed_full_v3000", "lr": 0.001}
+  ]
+}

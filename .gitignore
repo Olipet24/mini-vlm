@@ -29,6 +29,8 @@ report/*.log
 report/*.out
 # report/*.pdf
 report/*.synctex.gz
+report/*.bbl
+report/*.blg
 
 APS360_project_proposal-1.pdf
 aps360.sty

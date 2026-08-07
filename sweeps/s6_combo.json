@@ -1,0 +1,29 @@
+{
+  "name": "s6_combo",
+  "_purpose": "Combine the two strongest independent levers found so far (lr=1e-3 from s4, word-dropout=0.15 from s5) on top of the existing dropout=0.2/wd=0.01/K=16 base, plus a K=32 variant of the combo to check whether the capacity increase stacks with the regularization improvements.",
+  "base": {
+    "model": "primary",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "seed": 360,
+    "dropout": 0.2,
+    "weight-decay": 0.01,
+    "n-compressed-tokens": 16,
+    "pool": "last",
+    "lr": 0.001,
+    "word-dropout-prob": 0.15
+  },
+  "runs": [
+    {"run-name": "combo_lr_worddrop"},
+    {"run-name": "combo_lr_worddrop_k32", "n-compressed-tokens": 32},
+    {"run-name": "combo_lr_worddrop_noise", "feature-noise-std": 0.15}
+  ]
+}

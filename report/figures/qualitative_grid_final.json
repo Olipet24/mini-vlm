@@ -1,0 +1,50 @@
+[
+  {
+    "category": "both_correct",
+    "primary_pred": "no",
+    "primary_prob": 0.6202571392059326,
+    "baseline_pred": "no",
+    "baseline_prob": 0.6146987080574036,
+    "primary_correct": true,
+    "baseline_correct": true,
+    "question": "Is the cat in the way?",
+    "answer": "no",
+    "answer_type": "yes/no"
+  },
+  {
+    "category": "primary_only",
+    "primary_pred": "yes",
+    "primary_prob": 0.6536325812339783,
+    "baseline_pred": "no",
+    "baseline_prob": 0.6156224608421326,
+    "primary_correct": true,
+    "baseline_correct": false,
+    "question": "Is the dog chewing on a bottle?",
+    "answer": "yes",
+    "answer_type": "yes/no"
+  },
+  {
+    "category": "baseline_only",
+    "primary_pred": "no",
+    "primary_prob": 0.5274865627288818,
+    "baseline_pred": "yes",
+    "baseline_prob": 0.526899516582489,
+    "primary_correct": false,
+    "baseline_correct": true,
+    "question": "Is this man in a restaurant?",
+    "answer": "yes",
+    "answer_type": "yes/no"
+  },
+  {
+    "category": "both_wrong",
+    "primary_pred": "in air",
+    "primary_prob": 0.8133078813552856,
+    "baseline_pred": "in air",
+    "baseline_prob": 0.48879489302635193,
+    "primary_correct": false,
+    "baseline_correct": false,
+    "question": "Where is the skateboard?",
+    "answer": "air",
+    "answer_type": "other"
+  }
+]

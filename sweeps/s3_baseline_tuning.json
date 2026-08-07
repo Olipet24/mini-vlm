@@ -1,0 +1,46 @@
+{
+  "name": "s3_baseline_tuning",
+  "_purpose": "Baseline tuning grid, matching s1's search budget (6 configs) so the final report can honestly state both models received an equal, documented tuning pass -- the direct fix for the progress-report feedback that the baseline had 'no tuning beyond standard defaults'.",
+  "base": {
+    "model": "baseline",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 12,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "seed": 360,
+    "skip-test": true,
+    "pool": "last"
+  },
+  "runs": [
+    {
+      "run-name": "b_d0.1_wd0.01",
+      "dropout": 0.1,
+      "weight-decay": 0.01
+    },
+    {
+      "run-name": "b_d0.1_wd0.1",
+      "dropout": 0.1,
+      "weight-decay": 0.1
+    },
+    {
+      "run-name": "b_d0.2_wd0.01",
+      "dropout": 0.2,
+      "weight-decay": 0.01
+    },
+    {
+      "run-name": "b_d0.2_wd0.1",
+      "dropout": 0.2,
+      "weight-decay": 0.1
+    },
+    {
+      "run-name": "b_layers6",
+      "baseline-layers": 6
+    },
+    {
+      "run-name": "b_lr1e-3",
+      "lr": 0.001
+    }
+  ]
+}

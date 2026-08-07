@@ -1,0 +1,32 @@
+{
+  "name": "s7_round_a",
+  "_purpose": "Extended accuracy-investigation Round A: new architecture/loss levers not yet tried at all on the primary, on top of the v2 winning combo base (dropout=0.2, wd=0.01, K=16, pool=last, lr=1e-3, word-dropout=0.15). Current best to beat: combo_lr_worddrop val_loss=1.5629/val_acc=0.4786 (s6_combo). Target: val_acc >= ~0.49-0.50 for a 'substantial' win worth a final 3-seed retrain.",
+  "base": {
+    "model": "primary",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "skip-test": true,
+    "seed": 360,
+    "dropout": 0.2,
+    "weight-decay": 0.01,
+    "n-compressed-tokens": 16,
+    "pool": "last",
+    "lr": 0.001,
+    "word-dropout-prob": 0.15
+  },
+  "runs": [
+    {"run-name": "s7_token_order_qfirst", "token-order": "question_first"},
+    {"run-name": "s7_label_smooth_01", "label-smoothing": 0.1},
+    {"run-name": "s7_label_smooth_02", "label-smoothing": 0.2},
+    {"run-name": "s7_pool_lastreal", "pool": "last_real"},
+    {"run-name": "s7_pool_mean", "pool": "mean"}
+  ]
+}

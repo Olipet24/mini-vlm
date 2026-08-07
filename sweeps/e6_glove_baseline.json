@@ -1,0 +1,25 @@
+{
+  "name": "e6_glove_baseline",
+  "_purpose": "Phase 1f, baseline side (fairness mirror of e6_glove_primary.json): GloVe-derived word-embedding init.",
+  "base": {
+    "model": "baseline",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "skip-test": true,
+    "seed": 360,
+    "lr": 0.001
+  },
+  "runs": [
+    {"run-name": "e6_baseline_glove_s0.02", "embed-init": "glove", "glove-embed-path": "outputs/embeddings/glove_d128_processed_full.pt"},
+    {"run-name": "e6_baseline_glove_s0.1", "embed-init": "glove", "glove-embed-path": "outputs/embeddings/glove_d128_processed_full_scale0.1.pt"},
+    {"run-name": "e6_baseline_glove_s0.5", "embed-init": "glove", "glove-embed-path": "outputs/embeddings/glove_d128_processed_full_scale0.5.pt"}
+  ]
+}

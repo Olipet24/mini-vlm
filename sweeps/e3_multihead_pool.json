@@ -1,0 +1,31 @@
+{
+  "name": "e3_multihead_pool",
+  "_purpose": "Phase 1c: multi-head bridge pooling (multiple independent learned [K,49] pooling matrices, concatenated + merged, still directly-learned weights not cross-attention). Primary-only, no baseline mirror. Base = final_retrain_v3 winning config.",
+  "base": {
+    "model": "primary",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "skip-test": true,
+    "seed": 360,
+    "dropout": 0.15,
+    "weight-decay": 0.01,
+    "n-compressed-tokens": 16,
+    "pool": "last",
+    "lr": 0.001,
+    "word-dropout-prob": 0.15,
+    "token-order": "question_first"
+  },
+  "runs": [
+    {"run-name": "e3_pool_heads_1", "bridge-pool-heads": 1},
+    {"run-name": "e3_pool_heads_2", "bridge-pool-heads": 2},
+    {"run-name": "e3_pool_heads_4", "bridge-pool-heads": 4}
+  ]
+}

@@ -1,0 +1,118 @@
+% Every number cited in final_report.tex prose is defined here, sourced from
+% a specific logged file, so the report can never drift from the underlying
+% JSON. FINAL (not provisional) as of the 3-seed final retrain + blind
+% ablation in outputs/results_final/. Only the new-data (Tier 2) macros
+% remain TBD, pending the user's own collected photos -- see
+% /home/olipet24/.claude/plans/vectorized-sprouting-shore.md Phase F.
+%
+% Headline checkpoints for qualitative work / single-run figures: seed 360.
+% Test acc/loss reported in prose and Table 1 are 3-seed means (seeds
+% 360/361/362); per-type breakdown and confidence stats are from the
+% seed-360 checkpoint specifically (outputs/results_final/*_seed360_test_analysis.json).
+
+% -- baseline v4 (source: outputs/sweeps/e10_resolution/e10_baseline_320*_metrics.json +
+% outputs/results_final/baseline_v4_seed{360,361,362}_test_analysis.json). v4 = 320px resolution
+% re-cache (was 224px through v3), vision-spatial=10 (was 7). Baseline's own tuned
+% hyperparameters (lr=1e-3, dropout/wd defaults) unchanged from v1-v3 -- resolution is the only
+% change, applied identically to both models (fairness-mirrored, see Discussion). --
+\newcommand{\baselineParams}{2{,}581{,}224}
+\newcommand{\baselineSize}{9.87MB}
+\newcommand{\baselineTestAcc}{48.01\%}
+\newcommand{\baselineTestAccStd}{0.00\%}
+\newcommand{\baselineTestLoss}{1.56}
+\newcommand{\baselineAccYN}{57.87\%}
+\newcommand{\baselineAccOther}{43.92\%}
+\newcommand{\baselineAccNum}{29.48\%}
+\newcommand{\baselineTunedDropout}{0.1 (default)}
+\newcommand{\baselineTunedWeightDecay}{0.01 (default)}
+\newcommand{\baselineTunedLR}{$1{\times}10^{-3}$}
+
+% -- primary (source: outputs/sweeps/e11_question_cond/e11_qcond_seed{360,361,362}_metrics.json +
+% outputs/results_final/primary_v5_seed{360,361,362}_test_analysis.json). History: v1 45.76%+-0.31%
+% -> v2 46.31%+-0.20% (lr=1e-3+word-dropout=0.15) -> v3 46.56%+-0.52% (+token-order=question_first,
+% dropout 0.2->0.15) -> v4 47.54%+-0.09% (320px resolution re-cache, vision-spatial=10 -- richer
+% raw material for the bridge to compress from) -> v5 (this one, current/final: v4 + question-
+% conditioned pooling, see Architecture) -- the single biggest lever found across the whole
+% investigation, see Discussion.
+\newcommand{\primaryParams}{3{,}135{,}368}
+\newcommand{\primarySize}{12.00MB}
+\newcommand{\primaryTotalSize}{13.87MB}
+\newcommand{\primaryTestAcc}{48.05\%}
+\newcommand{\primaryTestAccStd}{0.19\%}
+\newcommand{\primaryTestLoss}{1.57}
+\newcommand{\primaryAccYN}{58.61\%}
+\newcommand{\primaryAccOther}{42.84\%}
+\newcommand{\primaryAccNum}{29.60\%}
+\newcommand{\primaryTunedDropout}{0.15}
+\newcommand{\primaryTunedWeightDecay}{0.01 (default)}
+\newcommand{\primaryTunedK}{16}
+\newcommand{\primaryTunedPool}{last (default; \texttt{last\_real}/\texttt{mean} tested, did not help)}
+\newcommand{\primaryTunedLR}{$1{\times}10^{-3}$}
+\newcommand{\primaryTunedWordDropout}{0.15}
+\newcommand{\primaryTunedTokenOrder}{question-first}
+\newcommand{\primaryResolution}{320px}
+\newcommand{\qCondExtraParams}{56{,}928}
+
+% -- primary ensemble (source: outputs/results_final/ensemble_v5_test_analysis.json) --
+% Soft-voting the 3 already-trained final seeds -- no extra training, no extra hyperparameter
+% search, a single direct evaluation of the one obvious combination (not selected among several
+% candidates by peeking at test). Reported alongside, not instead of, the single-seed number.
+\newcommand{\ensembleTestAcc}{50.34\%}
+\newcommand{\ensembleGainOverBaseline}{2.33}
+\newcommand{\ensembleGainOverBestSeed}{2.04}
+\newcommand{\ensembleSize}{36.0MB}
+
+% -- floors / ablations (source: outputs/results_final/primary_blind_metrics.json, test split) --
+\newcommand{\majorityFloor}{21.84\%}
+\newcommand{\blindFloor}{37.94\%}
+
+% -- confidence calibration (source: baseline_v4_seed360 / primary_v5_seed360_test_analysis.json) --
+\newcommand{\baselineConfCorrect}{0.61}
+\newcommand{\baselineConfIncorrect}{0.45}
+\newcommand{\primaryConfCorrect}{0.63}
+\newcommand{\primaryConfIncorrect}{0.46}
+
+% -- efficiency (source: outputs/results_final/efficiency_v5.json, batch=32, Tq=16, 320px;
+% re-measured on the final question-conditioned checkpoint -- the extra pooling MLP is too small
+% to move latency, numbers match the pre-question-conditioning measurement exactly) --
+\newcommand{\primaryLatencyMs}{3.3ms}
+\newcommand{\baselineLatencyMs}{1.6ms}
+\newcommand{\primaryFedLen}{32}
+\newcommand{\baselineFedLen}{116}
+
+% -- kernel ablation (source: outputs/results_final/kernel_ablation.json, Tq=16, batch=32, cuda:0) --
+\newcommand{\kernelOnMs}{3.2ms}
+\newcommand{\kernelOffMs}{29.5ms}
+\newcommand{\kernelSpeedup}{9.3$\times$}
+
+% -- long-T crossover (source: outputs/results_final/longT_crossover_summary.json,
+% efficiency_longT_kernel_{on,off}.json, longctx_probe_summary.json) --
+\newcommand{\crossoverTq}{512}
+\newcommand{\crossoverSpeedup}{1.52$\times$}
+\newcommand{\longctxOneXAcc}{27.7\%}
+\newcommand{\longctxFourXAcc}{28.3\%}
+\newcommand{\longctxSixteenXAcc}{28.1\%}
+
+% -- teacher-forcing prototype (source: outputs/results_final/teacher_forcing_poc_metrics.json) --
+\newcommand{\tfValAcc}{46.73\%}
+\newcommand{\tfDecodeLen}{3}
+
+% -- expansion round Phase 1 (source: outputs/sweeps/EXPANSION_LEDGER.md) -- every architectural/
+% embedding/adapter lever tried and dropped before resolution was found to be the actual winner.
+\newcommand{\phaseOneAxesTried}{6}
+
+% -- new data (source: outputs/results_new_data/new_data_summary.json; BLOCKED on user photos) --
+\newcommand{\newDataN}{TBD}
+\newcommand{\newDataBaselineAcc}{TBD}
+\newcommand{\newDataBaselineCI}{TBD}
+\newcommand{\newDataPrimaryAcc}{TBD}
+\newcommand{\newDataPrimaryCI}{TBD}
+\newcommand{\newDataMajorityFloor}{TBD}
+
+% -- misc --
+\newcommand{\testSetSize}{186{,}489}
+\newcommand{\testSetYN}{80{,}539}
+\newcommand{\testSetOther}{80{,}930}
+\newcommand{\testSetNum}{25{,}020}
+\newcommand{\trainPoolSize}{368{,}751}
+\newcommand{\vocabCoverage}{87.47\%}

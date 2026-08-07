@@ -1,0 +1,30 @@
+{
+  "name": "e2_reweight_primary",
+  "_purpose": "Phase 1b, primary side: reweighted training sampling toward 'other' (WeightedRandomSampler), where primary's accuracy gap vs baseline specifically lives. Shared/fairness lever -- see e2_reweight_baseline.json for the mirrored baseline sweep. Base = final_retrain_v3 winning config.",
+  "base": {
+    "model": "primary",
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 30,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "early-stop-patience": 5,
+    "min-epochs": 8,
+    "save-best": true,
+    "select-metric": "val_loss",
+    "skip-test": true,
+    "seed": 360,
+    "dropout": 0.15,
+    "weight-decay": 0.01,
+    "n-compressed-tokens": 16,
+    "pool": "last",
+    "lr": 0.001,
+    "word-dropout-prob": 0.15,
+    "token-order": "question_first"
+  },
+  "runs": [
+    {"run-name": "e2_primary_reweight_1.5", "type-sample-weight": "yes/no:1.0,other:1.5,number:1.0"},
+    {"run-name": "e2_primary_reweight_2.0", "type-sample-weight": "yes/no:1.0,other:2.0,number:1.0"}
+  ]
+}

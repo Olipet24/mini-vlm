@@ -1,0 +1,36 @@
+{
+  "name": "s0_readout",
+  "_purpose": "Readout-position + language-prior sanity probes. p_pool_last is the exact prior default config, included as a control run under the new skip-test/12-epoch sweep protocol. p_blind is a report deliverable in its own right (question-only accuracy floor), not just a probe.",
+  "base": {
+    "processed-dir": "outputs/processed_full",
+    "features-dir": "outputs/features_full",
+    "epochs": 12,
+    "batch-size": 128,
+    "num-workers": 0,
+    "warmup-steps": 200,
+    "seed": 360,
+    "skip-test": true
+  },
+  "runs": [
+    {
+      "run-name": "p_pool_last",
+      "model": "primary",
+      "pool": "last"
+    },
+    {
+      "run-name": "p_pool_lastreal",
+      "model": "primary",
+      "pool": "last_real"
+    },
+    {
+      "run-name": "b_pool_lastreal",
+      "model": "baseline",
+      "pool": "last_real"
+    },
+    {
+      "run-name": "p_blind",
+      "model": "primary",
+      "ablate-vision": true
+    }
+  ]
+}
