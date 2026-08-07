@@ -1,0 +1,100 @@
+photo01.jpg,Is this a red apple?,yes,yes/no
+photo01.jpg,What color is the apple?,red,other
+photo02.jpg,Is the apple red?,no,yes/no
+photo02.jpg,What color is the apple?,green,other
+photo03.jpg,Is this a banana?,yes,yes/no
+photo03.jpg,What color is the banana?,yellow,other
+photo04.jpg,Is there coffee in the cup?,yes,yes/no
+photo04.jpg,What is in the cup?,coffee,other
+photo05.jpg,Is this a laptop?,yes,yes/no
+photo05.jpg,What is on the desk?,laptop,other
+photo06.jpg,Are these sunglasses?,yes,yes/no
+photo06.jpg,What is this object?,sunglasses,other
+photo07.jpg,Is this an umbrella?,yes,yes/no
+photo07.jpg,What is this?,umbrella,other
+photo08.jpg,Is this a backpack?,yes,yes/no
+photo08.jpg,What is this object?,backpack,other
+photo09.jpg,Is this a bicycle?,yes,yes/no
+photo09.jpg,What is this?,bicycle,other
+photo10.jpg,Is this a watch?,yes,yes/no
+photo10.jpg,What is this object?,watch,other
+photo11.jpg,Is the shirt blue?,yes,yes/no
+photo11.jpg,What color is the shirt?,blue,other
+photo12.jpg,Is the shirt white?,no,yes/no
+photo12.jpg,What color is the shirt?,black,other
+photo13.jpg,Are these shoes?,yes,yes/no
+photo13.jpg,What are these?,shoes,other
+photo14.jpg,Is this a book?,yes,yes/no
+photo14.jpg,What is this object?,book,other
+photo15.jpg,Is this a pillow?,yes,yes/no
+photo15.jpg,What is this?,pillow,other
+photo16.jpg,Is this a clock?,yes,yes/no
+photo16.jpg,What is on the wall?,clock,other
+photo17.jpg,Is this a mirror?,yes,yes/no
+photo17.jpg,What is this object?,mirror,other
+photo18.jpg,Is this a candle?,yes,yes/no
+photo18.jpg,What is this?,candle,other
+photo19.jpg,Is this a vase?,yes,yes/no
+photo19.jpg,What is this object?,vase,other
+photo20.jpg,Are there flowers in the photo?,yes,yes/no
+photo20.jpg,What is in the vase?,flowers,other
+photo21.jpg,Is this a plant?,yes,yes/no
+photo21.jpg,What is this?,plant,other
+photo22.jpg,Is this a remote?,yes,yes/no
+photo22.jpg,What is this object?,remote,other
+photo23.jpg,Is this a phone?,yes,yes/no
+photo23.jpg,What is this object?,cell phone,other
+photo24.jpg,Is this a mouse?,yes,yes/no
+photo24.jpg,What is this object?,mouse,other
+photo25.jpg,Is this a keyboard?,yes,yes/no
+photo25.jpg,What is this?,keyboard,other
+photo26.jpg,Is this a microwave?,yes,yes/no
+photo26.jpg,What room is this?,kitchen,other
+photo27.jpg,Is this a bathroom?,yes,yes/no
+photo27.jpg,What room is this?,bathroom,other
+photo28.jpg,Is there a bed in this room?,yes,yes/no
+photo28.jpg,What room is this?,bedroom,other
+photo29.jpg,Is there a couch in this room?,yes,yes/no
+photo29.jpg,What room is this?,living room,other
+photo30.jpg,Is this pizza?,yes,yes/no
+photo30.jpg,What food is this?,pizza,other
+photo31.jpg,Is this a sandwich?,yes,yes/no
+photo31.jpg,What food is this?,sandwich,other
+photo32.jpg,Is this a salad?,yes,yes/no
+photo32.jpg,What food is this?,salad,other
+photo33.jpg,Is this cake?,yes,yes/no
+photo33.jpg,What food is this?,cake,other
+photo34.jpg,Is this tea?,yes,yes/no
+photo34.jpg,What is in the cup?,tea,other
+photo35.jpg,Is this milk?,yes,yes/no
+photo35.jpg,What is in the glass?,milk,other
+photo36.jpg,Is this a car?,yes,yes/no
+photo36.jpg,What is this vehicle?,car,other
+photo37.jpg,Is it sunny?,no,yes/no
+photo37.jpg,What is the weather like?,cloudy,other
+photo38.jpg,Is it sunny?,yes,yes/no
+photo38.jpg,What is the weather like?,sunny,other
+photo39.jpg,Is there grass in the photo?,yes,yes/no
+photo39.jpg,What is on the ground?,grass,other
+photo40.jpg,Is this a tree?,yes,yes/no
+photo40.jpg,What is this?,tree,other
+photo41.jpg,How many apples are there?,3,number
+photo41.jpg,How many bananas are there?,2,number
+photo42.jpg,How many books are there?,3,number
+photo42.jpg,How many pens are there?,1,number
+photo43.jpg,How many forks are there?,1,number
+photo43.jpg,How many spoons are there?,2,number
+photo44.jpg,How many chairs are there?,2,number
+photo44.jpg,How many pens are there?,1,number
+photo45.jpg,How many spoons are there?,2,number
+photo45.jpg,How many pens are there?,1,number
+photo46.jpg,How many bottles are there?,2,number
+photo46.jpg,How many cups are there?,2,number
+photo47.jpg,How many pens are there?,2,number
+photo47.jpg,How many pens are on plate?,0,number
+photo48.jpg,How many windows are there?,1,number
+photo48.jpg,How many doors are there?,1,number
+photo49.jpg,How many pillows are there?,3,number
+photo49.jpg,How many blankets are there?,1,number
+photo50.jpg,How many oranges are there?,2,number
+photo50.jpg,How many apples are there?,2,number
