@@ -1,3 +1,4 @@
+image_filename,question,answer,answer_type
 photo01.jpg,Is this a red apple?,yes,yes/no
 photo01.jpg,What color is the apple?,red,other
 photo02.jpg,Is the apple red?,no,yes/no

@@ -41,6 +41,7 @@ import matplotlib.pyplot as plt
 import torch
 from PIL import Image, ImageOps
 
+from mini_vlm.data.vision_cache import build_preprocess
 from mini_vlm.model_utils import load_checkpoint, load_model_cfg
 from mini_vlm.models.vision_encoder import build_frozen_encoder, compress_encoder_fp16
 from mini_vlm.text import Tokenizer
@@ -123,6 +124,11 @@ def main() -> None:
     parser.add_argument("--out-dir", default="outputs/results_new_data")
     parser.add_argument("--device", default="auto")
     parser.add_argument("--max-grid", type=int, default=8)
+    parser.add_argument("--resize", type=int, default=224,
+                         help="must match the vision_spatial the target checkpoints were trained "
+                              "at (320 for the final v5/v4 models, vision_spatial=10) -- the "
+                              "encoder's bundled preprocess() defaults to 224px/7x7 and will "
+                              "produce a shape mismatch against a 320px-trained bridge otherwise.")
     args = parser.parse_args()
 
     images_dir = Path(args.images_dir)
@@ -166,6 +172,7 @@ def main() -> None:
 
     # -- vision features, computed in-process (no cache needed at this scale) --
     encoder = compress_encoder_fp16(build_frozen_encoder()).to(device)
+    preprocess = build_preprocess(encoder.preprocess, args.resize)
     features_by_file = {}
     with torch.no_grad():
         for r in rows:
@@ -173,7 +180,7 @@ def main() -> None:
             if fname in features_by_file:
                 continue
             img = ImageOps.exif_transpose(Image.open(images_dir / fname).convert("RGB"))
-            x = encoder.preprocess(img).unsqueeze(0).to(device).half()
+            x = preprocess(img).unsqueeze(0).to(device).half()
             feat = encoder(x)[0].float().cpu()  # [576, 7, 7]
             features_by_file[fname] = feat
 

@@ -1,0 +1,4202 @@
+[
+  {
+    "image_filename": "photo01.jpg",
+    "question": "Is this a red apple?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5841
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4156
+          },
+          {
+            "answer": "red",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.581
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4185
+          },
+          {
+            "answer": "red",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo01.jpg",
+    "question": "What color is the apple?",
+    "answer": "red",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "red",
+            "prob": 0.9645
+          },
+          {
+            "answer": "orange",
+            "prob": 0.0106
+          },
+          {
+            "answer": "black",
+            "prob": 0.0056
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "red",
+            "prob": 0.9693
+          },
+          {
+            "answer": "green",
+            "prob": 0.0181
+          },
+          {
+            "answer": "red and white",
+            "prob": 0.0025
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo02.jpg",
+    "question": "Is the apple red?",
+    "answer": "no",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6181
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3816
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6698
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3296
+          },
+          {
+            "answer": "white",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo02.jpg",
+    "question": "What color is the apple?",
+    "answer": "green",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "green",
+            "prob": 0.8882
+          },
+          {
+            "answer": "yellow",
+            "prob": 0.0778
+          },
+          {
+            "answer": "white",
+            "prob": 0.0114
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "green",
+            "prob": 0.9876
+          },
+          {
+            "answer": "yellow",
+            "prob": 0.0039
+          },
+          {
+            "answer": "green and white",
+            "prob": 0.0023
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo03.jpg",
+    "question": "Is this a banana?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6194
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3804
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5094
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4903
+          },
+          {
+            "answer": "white",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo03.jpg",
+    "question": "What color is the banana?",
+    "answer": "yellow",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yellow",
+            "prob": 0.9552
+          },
+          {
+            "answer": "white",
+            "prob": 0.0186
+          },
+          {
+            "answer": "green",
+            "prob": 0.01
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yellow",
+            "prob": 0.9873
+          },
+          {
+            "answer": "yellow and blue",
+            "prob": 0.0042
+          },
+          {
+            "answer": "yellow and white",
+            "prob": 0.0031
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo04.jpg",
+    "question": "Is there coffee in the cup?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5141
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4853
+          },
+          {
+            "answer": "coffee",
+            "prob": 0.0001
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5385
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4611
+          },
+          {
+            "answer": "2",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo04.jpg",
+    "question": "What is in the cup?",
+    "answer": "coffee",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "coffee",
+            "prob": 0.7742
+          },
+          {
+            "answer": "milk",
+            "prob": 0.0708
+          },
+          {
+            "answer": "soup",
+            "prob": 0.0491
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "coffee",
+            "prob": 0.8641
+          },
+          {
+            "answer": "soup",
+            "prob": 0.0926
+          },
+          {
+            "answer": "milk",
+            "prob": 0.0102
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo05.jpg",
+    "question": "Is this a laptop?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.615
+          },
+          {
+            "answer": "no",
+            "prob": 0.3847
+          },
+          {
+            "answer": "work",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.6271
+          },
+          {
+            "answer": "no",
+            "prob": 0.3725
+          },
+          {
+            "answer": "pillows",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo05.jpg",
+    "question": "What is on the desk?",
+    "answer": "laptop",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "laptop",
+            "prob": 0.646
+          },
+          {
+            "answer": "computer",
+            "prob": 0.0808
+          },
+          {
+            "answer": "mouse",
+            "prob": 0.0588
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "laptop",
+            "prob": 0.9284
+          },
+          {
+            "answer": "computer",
+            "prob": 0.015
+          },
+          {
+            "answer": "book",
+            "prob": 0.0122
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo06.jpg",
+    "question": "Are these sunglasses?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5132
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4866
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5683
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4312
+          },
+          {
+            "answer": "white",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo06.jpg",
+    "question": "What is this object?",
+    "answer": "sunglasses",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "scissors",
+            "prob": 0.9823
+          },
+          {
+            "answer": "cutting",
+            "prob": 0.0028
+          },
+          {
+            "answer": "apple",
+            "prob": 0.0013
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "scissors",
+            "prob": 0.98
+          },
+          {
+            "answer": "toothbrush",
+            "prob": 0.0068
+          },
+          {
+            "answer": "knife",
+            "prob": 0.0022
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo07.jpg",
+    "question": "Is this an umbrella?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.592
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4079
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6328
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3668
+          },
+          {
+            "answer": "white",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo07.jpg",
+    "question": "What is this?",
+    "answer": "umbrella",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "umbrella",
+            "prob": 0.2527
+          },
+          {
+            "answer": "airplane",
+            "prob": 0.1421
+          },
+          {
+            "answer": "person",
+            "prob": 0.0749
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "paper",
+            "prob": 0.1962
+          },
+          {
+            "answer": "umbrella",
+            "prob": 0.0964
+          },
+          {
+            "answer": "laptop",
+            "prob": 0.0937
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo08.jpg",
+    "question": "Is this a backpack?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5363
+          },
+          {
+            "answer": "no",
+            "prob": 0.4634
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6143
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3853
+          },
+          {
+            "answer": "black",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo08.jpg",
+    "question": "What is this object?",
+    "answer": "backpack",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "suitcase",
+            "prob": 0.4211
+          },
+          {
+            "answer": "book",
+            "prob": 0.0286
+          },
+          {
+            "answer": "luggage",
+            "prob": 0.0277
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "suitcase",
+            "prob": 0.8637
+          },
+          {
+            "answer": "purse",
+            "prob": 0.047
+          },
+          {
+            "answer": "backpack",
+            "prob": 0.0126
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo09.jpg",
+    "question": "Is this a bicycle?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5733
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4265
+          },
+          {
+            "answer": "inside",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.6075
+          },
+          {
+            "answer": "no",
+            "prob": 0.3922
+          },
+          {
+            "answer": "2",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo09.jpg",
+    "question": "What is this?",
+    "answer": "bicycle",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "bike",
+            "prob": 0.3701
+          },
+          {
+            "answer": "bicycle",
+            "prob": 0.2559
+          },
+          {
+            "answer": "clock",
+            "prob": 0.0509
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "bike",
+            "prob": 0.1911
+          },
+          {
+            "answer": "bicycle",
+            "prob": 0.098
+          },
+          {
+            "answer": "phone",
+            "prob": 0.0731
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo10.jpg",
+    "question": "Is this a watch?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5183
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4815
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5465
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4531
+          },
+          {
+            "answer": "right",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo10.jpg",
+    "question": "What is this object?",
+    "answer": "watch",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "remote",
+            "prob": 0.2145
+          },
+          {
+            "answer": "phone",
+            "prob": 0.1795
+          },
+          {
+            "answer": "cell phone",
+            "prob": 0.065
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "phone",
+            "prob": 0.3923
+          },
+          {
+            "answer": "remote",
+            "prob": 0.1776
+          },
+          {
+            "answer": "clock",
+            "prob": 0.1292
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo11.jpg",
+    "question": "Is the shirt blue?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5852
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4146
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6559
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3439
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo11.jpg",
+    "question": "What color is the shirt?",
+    "answer": "blue",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "blue",
+            "prob": 0.6308
+          },
+          {
+            "answer": "green",
+            "prob": 0.1573
+          },
+          {
+            "answer": "gray",
+            "prob": 0.061
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "blue",
+            "prob": 0.9234
+          },
+          {
+            "answer": "green",
+            "prob": 0.0286
+          },
+          {
+            "answer": "white",
+            "prob": 0.0142
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo12.jpg",
+    "question": "Is the shirt white?",
+    "answer": "no",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6501
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3498
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6502
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3495
+          },
+          {
+            "answer": "white",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo12.jpg",
+    "question": "What color is the shirt?",
+    "answer": "black",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "black",
+            "prob": 0.5838
+          },
+          {
+            "answer": "white",
+            "prob": 0.2086
+          },
+          {
+            "answer": "gray",
+            "prob": 0.0348
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "black",
+            "prob": 0.8743
+          },
+          {
+            "answer": "blue",
+            "prob": 0.0505
+          },
+          {
+            "answer": "gray",
+            "prob": 0.0219
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo13.jpg",
+    "question": "Are these shoes?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.537
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4627
+          },
+          {
+            "answer": "white",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5942
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4052
+          },
+          {
+            "answer": "white",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo13.jpg",
+    "question": "What are these?",
+    "answer": "shoes",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "planes",
+            "prob": 0.1098
+          },
+          {
+            "answer": "birds",
+            "prob": 0.1061
+          },
+          {
+            "answer": "airplane",
+            "prob": 0.0786
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "cake",
+            "prob": 0.1398
+          },
+          {
+            "answer": "scissors",
+            "prob": 0.1026
+          },
+          {
+            "answer": "planes",
+            "prob": 0.0807
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo14.jpg",
+    "question": "Is this a book?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6237
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3761
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5944
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4052
+          },
+          {
+            "answer": "white",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo14.jpg",
+    "question": "What is this object?",
+    "answer": "book",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "laptop",
+            "prob": 0.2737
+          },
+          {
+            "answer": "phone",
+            "prob": 0.2114
+          },
+          {
+            "answer": "book",
+            "prob": 0.1678
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "laptop",
+            "prob": 0.6931
+          },
+          {
+            "answer": "paper",
+            "prob": 0.0526
+          },
+          {
+            "answer": "book",
+            "prob": 0.0497
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo15.jpg",
+    "question": "Is this a pillow?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5551
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4447
+          },
+          {
+            "answer": "inside",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5229
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4768
+          },
+          {
+            "answer": "right",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo15.jpg",
+    "question": "What is this?",
+    "answer": "pillow",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "bedroom",
+            "prob": 0.1451
+          },
+          {
+            "answer": "train",
+            "prob": 0.11
+          },
+          {
+            "answer": "elephant",
+            "prob": 0.0596
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "cat",
+            "prob": 0.1022
+          },
+          {
+            "answer": "toilet",
+            "prob": 0.0655
+          },
+          {
+            "answer": "train",
+            "prob": 0.057
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo16.jpg",
+    "question": "Is this a clock?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.614
+          },
+          {
+            "answer": "no",
+            "prob": 0.3859
+          },
+          {
+            "answer": "inside",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5523
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4474
+          },
+          {
+            "answer": "white",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo16.jpg",
+    "question": "What is on the wall?",
+    "answer": "clock",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "clock",
+            "prob": 0.2848
+          },
+          {
+            "answer": "picture",
+            "prob": 0.2315
+          },
+          {
+            "answer": "mirror",
+            "prob": 0.1772
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "clock",
+            "prob": 0.6777
+          },
+          {
+            "answer": "vase",
+            "prob": 0.1017
+          },
+          {
+            "answer": "mirror",
+            "prob": 0.03
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo17.jpg",
+    "question": "Is this a mirror?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6384
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3615
+          },
+          {
+            "answer": "inside",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5265
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4732
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo17.jpg",
+    "question": "What is this object?",
+    "answer": "mirror",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "apple",
+            "prob": 0.101
+          },
+          {
+            "answer": "toilet",
+            "prob": 0.091
+          },
+          {
+            "answer": "mouse",
+            "prob": 0.0802
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "vase",
+            "prob": 0.7435
+          },
+          {
+            "answer": "bowl",
+            "prob": 0.0636
+          },
+          {
+            "answer": "clock",
+            "prob": 0.0428
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo18.jpg",
+    "question": "Is this a candle?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5042
+          },
+          {
+            "answer": "no",
+            "prob": 0.4955
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6468
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3529
+          },
+          {
+            "answer": "white",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo18.jpg",
+    "question": "What is this?",
+    "answer": "candle",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "flower",
+            "prob": 0.2398
+          },
+          {
+            "answer": "toothbrush",
+            "prob": 0.0695
+          },
+          {
+            "answer": "plants",
+            "prob": 0.0569
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "glass",
+            "prob": 0.3855
+          },
+          {
+            "answer": "hair dryer",
+            "prob": 0.1046
+          },
+          {
+            "answer": "wine glass",
+            "prob": 0.0637
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo19.jpg",
+    "question": "Is this a vase?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5144
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4854
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5732
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4266
+          },
+          {
+            "answer": "white",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo19.jpg",
+    "question": "What is this object?",
+    "answer": "vase",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "vase",
+            "prob": 0.2325
+          },
+          {
+            "answer": "daisy",
+            "prob": 0.1514
+          },
+          {
+            "answer": "fire hydrant",
+            "prob": 0.1495
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "vase",
+            "prob": 0.6751
+          },
+          {
+            "answer": "fire hydrant",
+            "prob": 0.0618
+          },
+          {
+            "answer": "clock",
+            "prob": 0.0401
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo20.jpg",
+    "question": "Are there flowers in the photo?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5272
+          },
+          {
+            "answer": "no",
+            "prob": 0.4726
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.73
+          },
+          {
+            "answer": "no",
+            "prob": 0.2689
+          },
+          {
+            "answer": "pillows",
+            "prob": 0.0002
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo20.jpg",
+    "question": "What is in the vase?",
+    "answer": "flowers",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "flowers",
+            "prob": 0.8301
+          },
+          {
+            "answer": "flower",
+            "prob": 0.041
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0362
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "flowers",
+            "prob": 0.9355
+          },
+          {
+            "answer": "flower",
+            "prob": 0.0232
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0192
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo21.jpg",
+    "question": "Is this a plant?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.67
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3298
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6299
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3694
+          },
+          {
+            "answer": "white",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo21.jpg",
+    "question": "What is this?",
+    "answer": "plant",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "vase",
+            "prob": 0.5596
+          },
+          {
+            "answer": "flower",
+            "prob": 0.1769
+          },
+          {
+            "answer": "flowers",
+            "prob": 0.0725
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "vase",
+            "prob": 0.8015
+          },
+          {
+            "answer": "clay",
+            "prob": 0.0259
+          },
+          {
+            "answer": "flowers",
+            "prob": 0.0198
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo22.jpg",
+    "question": "Is this a remote?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5819
+          },
+          {
+            "answer": "no",
+            "prob": 0.4177
+          },
+          {
+            "answer": "right",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6888
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3108
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo22.jpg",
+    "question": "What is this object?",
+    "answer": "remote",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "tv",
+            "prob": 0.3216
+          },
+          {
+            "answer": "remote",
+            "prob": 0.159
+          },
+          {
+            "answer": "phone",
+            "prob": 0.1584
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "remote",
+            "prob": 0.3984
+          },
+          {
+            "answer": "phone",
+            "prob": 0.204
+          },
+          {
+            "answer": "laptop",
+            "prob": 0.0532
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo23.jpg",
+    "question": "Is this a phone?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.6437
+          },
+          {
+            "answer": "no",
+            "prob": 0.3561
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.541
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4585
+          },
+          {
+            "answer": "right",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo23.jpg",
+    "question": "What is this object?",
+    "answer": "cell phone",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "laptop",
+            "prob": 0.7236
+          },
+          {
+            "answer": "tv",
+            "prob": 0.0652
+          },
+          {
+            "answer": "mouse",
+            "prob": 0.0557
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "laptop",
+            "prob": 0.3798
+          },
+          {
+            "answer": "tv",
+            "prob": 0.1967
+          },
+          {
+            "answer": "book",
+            "prob": 0.1044
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo24.jpg",
+    "question": "Is this a mouse?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5583
+          },
+          {
+            "answer": "no",
+            "prob": 0.4415
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5781
+          },
+          {
+            "answer": "no",
+            "prob": 0.4216
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo24.jpg",
+    "question": "What is this object?",
+    "answer": "mouse",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "phone",
+            "prob": 0.2456
+          },
+          {
+            "answer": "mouse",
+            "prob": 0.1505
+          },
+          {
+            "answer": "cell phone",
+            "prob": 0.1385
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "phone",
+            "prob": 0.2317
+          },
+          {
+            "answer": "scissors",
+            "prob": 0.0902
+          },
+          {
+            "answer": "cell phone",
+            "prob": 0.0763
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo25.jpg",
+    "question": "Is this a keyboard?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6453
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3545
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.7545
+          },
+          {
+            "answer": "yes",
+            "prob": 0.2449
+          },
+          {
+            "answer": "white",
+            "prob": 0.0001
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo25.jpg",
+    "question": "What is this?",
+    "answer": "keyboard",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "keyboard",
+            "prob": 0.3393
+          },
+          {
+            "answer": "computer",
+            "prob": 0.228
+          },
+          {
+            "answer": "laptop",
+            "prob": 0.073
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "computer",
+            "prob": 0.3627
+          },
+          {
+            "answer": "keyboard",
+            "prob": 0.1788
+          },
+          {
+            "answer": "phone",
+            "prob": 0.1032
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo26.jpg",
+    "question": "Is this a microwave?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6037
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3961
+          },
+          {
+            "answer": "right",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6458
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3538
+          },
+          {
+            "answer": "right",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo26.jpg",
+    "question": "What room is this?",
+    "answer": "kitchen",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "kitchen",
+            "prob": 0.9984
+          },
+          {
+            "answer": "cooking",
+            "prob": 0.0003
+          },
+          {
+            "answer": "bathroom",
+            "prob": 0.0002
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "kitchen",
+            "prob": 0.9911
+          },
+          {
+            "answer": "cooking",
+            "prob": 0.0051
+          },
+          {
+            "answer": "bathroom",
+            "prob": 0.0023
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo27.jpg",
+    "question": "Is this a bathroom?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.6489
+          },
+          {
+            "answer": "no",
+            "prob": 0.351
+          },
+          {
+            "answer": "water",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5288
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4709
+          },
+          {
+            "answer": "2",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo27.jpg",
+    "question": "What room is this?",
+    "answer": "bathroom",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "bathroom",
+            "prob": 0.9989
+          },
+          {
+            "answer": "bedroom",
+            "prob": 0.0002
+          },
+          {
+            "answer": "kitchen",
+            "prob": 0.0002
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "bathroom",
+            "prob": 0.9985
+          },
+          {
+            "answer": "kitchen",
+            "prob": 0.0007
+          },
+          {
+            "answer": "office",
+            "prob": 0.0002
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo28.jpg",
+    "question": "Is there a bed in this room?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.7689
+          },
+          {
+            "answer": "no",
+            "prob": 0.2309
+          },
+          {
+            "answer": "2",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.6796
+          },
+          {
+            "answer": "no",
+            "prob": 0.3199
+          },
+          {
+            "answer": "pillows",
+            "prob": 0.0002
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo28.jpg",
+    "question": "What room is this?",
+    "answer": "bedroom",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "bedroom",
+            "prob": 0.6978
+          },
+          {
+            "answer": "bathroom",
+            "prob": 0.2227
+          },
+          {
+            "answer": "living room",
+            "prob": 0.0369
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "living room",
+            "prob": 0.7565
+          },
+          {
+            "answer": "bedroom",
+            "prob": 0.2153
+          },
+          {
+            "answer": "bathroom",
+            "prob": 0.0206
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo29.jpg",
+    "question": "Is there a couch in this room?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.553
+          },
+          {
+            "answer": "no",
+            "prob": 0.4468
+          },
+          {
+            "answer": "inside",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5821
+          },
+          {
+            "answer": "no",
+            "prob": 0.4177
+          },
+          {
+            "answer": "pillows",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo29.jpg",
+    "question": "What room is this?",
+    "answer": "living room",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "living room",
+            "prob": 0.6845
+          },
+          {
+            "answer": "office",
+            "prob": 0.0755
+          },
+          {
+            "answer": "kitchen",
+            "prob": 0.0739
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "living room",
+            "prob": 0.9379
+          },
+          {
+            "answer": "kitchen",
+            "prob": 0.0321
+          },
+          {
+            "answer": "office",
+            "prob": 0.0106
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo30.jpg",
+    "question": "Is this pizza?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5265
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4734
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5159
+          },
+          {
+            "answer": "no",
+            "prob": 0.4837
+          },
+          {
+            "answer": "pillows",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo30.jpg",
+    "question": "What food is this?",
+    "answer": "pizza",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "pizza",
+            "prob": 0.9857
+          },
+          {
+            "answer": "pepperoni",
+            "prob": 0.0079
+          },
+          {
+            "answer": "italian",
+            "prob": 0.0026
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "pizza",
+            "prob": 0.9962
+          },
+          {
+            "answer": "italian",
+            "prob": 0.0016
+          },
+          {
+            "answer": "pepperoni",
+            "prob": 0.0003
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo31.jpg",
+    "question": "Is this a sandwich?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5531
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4464
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5735
+          },
+          {
+            "answer": "no",
+            "prob": 0.4261
+          },
+          {
+            "answer": "pizza",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo31.jpg",
+    "question": "What food is this?",
+    "answer": "sandwich",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "sandwich",
+            "prob": 0.5531
+          },
+          {
+            "answer": "pizza",
+            "prob": 0.2944
+          },
+          {
+            "answer": "hot dog",
+            "prob": 0.0474
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "sandwich",
+            "prob": 0.5923
+          },
+          {
+            "answer": "pizza",
+            "prob": 0.2224
+          },
+          {
+            "answer": "hot dog",
+            "prob": 0.0378
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo32.jpg",
+    "question": "Is this a salad?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5287
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4711
+          },
+          {
+            "answer": "meat",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5103
+          },
+          {
+            "answer": "no",
+            "prob": 0.4893
+          },
+          {
+            "answer": "right",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo32.jpg",
+    "question": "What food is this?",
+    "answer": "salad",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "pizza",
+            "prob": 0.6381
+          },
+          {
+            "answer": "salad",
+            "prob": 0.1199
+          },
+          {
+            "answer": "sandwich",
+            "prob": 0.0588
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "salad",
+            "prob": 0.2831
+          },
+          {
+            "answer": "pizza",
+            "prob": 0.143
+          },
+          {
+            "answer": "chinese",
+            "prob": 0.1361
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo33.jpg",
+    "question": "Is this cake?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5768
+          },
+          {
+            "answer": "no",
+            "prob": 0.423
+          },
+          {
+            "answer": "cake",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5946
+          },
+          {
+            "answer": "no",
+            "prob": 0.405
+          },
+          {
+            "answer": "right",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo33.jpg",
+    "question": "What food is this?",
+    "answer": "cake",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "cake",
+            "prob": 0.986
+          },
+          {
+            "answer": "dessert",
+            "prob": 0.0045
+          },
+          {
+            "answer": "donut",
+            "prob": 0.0014
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "cake",
+            "prob": 0.7917
+          },
+          {
+            "answer": "dessert",
+            "prob": 0.119
+          },
+          {
+            "answer": "bread",
+            "prob": 0.0155
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo34.jpg",
+    "question": "Is this tea?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.512
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4877
+          },
+          {
+            "answer": "water",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5058
+          },
+          {
+            "answer": "no",
+            "prob": 0.4939
+          },
+          {
+            "answer": "right",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo34.jpg",
+    "question": "What is in the cup?",
+    "answer": "tea",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "coffee",
+            "prob": 0.2129
+          },
+          {
+            "answer": "water",
+            "prob": 0.1705
+          },
+          {
+            "answer": "wine",
+            "prob": 0.1362
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "coffee",
+            "prob": 0.5961
+          },
+          {
+            "answer": "soup",
+            "prob": 0.1675
+          },
+          {
+            "answer": "milk",
+            "prob": 0.0736
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo35.jpg",
+    "question": "Is this milk?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5092
+          },
+          {
+            "answer": "no",
+            "prob": 0.4906
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6078
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3919
+          },
+          {
+            "answer": "right",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo35.jpg",
+    "question": "What is in the glass?",
+    "answer": "milk",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "milk",
+            "prob": 0.2804
+          },
+          {
+            "answer": "water",
+            "prob": 0.2634
+          },
+          {
+            "answer": "coffee",
+            "prob": 0.1401
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "coffee",
+            "prob": 0.2949
+          },
+          {
+            "answer": "milk",
+            "prob": 0.1784
+          },
+          {
+            "answer": "water",
+            "prob": 0.1535
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo36.jpg",
+    "question": "Is this a car?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.6004
+          },
+          {
+            "answer": "yes",
+            "prob": 0.3994
+          },
+          {
+            "answer": "neither",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5245
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4752
+          },
+          {
+            "answer": "right",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo36.jpg",
+    "question": "What is this vehicle?",
+    "answer": "car",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "car",
+            "prob": 0.3531
+          },
+          {
+            "answer": "truck",
+            "prob": 0.348
+          },
+          {
+            "answer": "ford",
+            "prob": 0.1824
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "car",
+            "prob": 0.4984
+          },
+          {
+            "answer": "cars",
+            "prob": 0.0659
+          },
+          {
+            "answer": "motorcycle",
+            "prob": 0.0541
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo37.jpg",
+    "question": "Is it sunny?",
+    "answer": "no",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.8259
+          },
+          {
+            "answer": "yes",
+            "prob": 0.1737
+          },
+          {
+            "answer": "plane",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.8622
+          },
+          {
+            "answer": "yes",
+            "prob": 0.1374
+          },
+          {
+            "answer": "1",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo37.jpg",
+    "question": "What is the weather like?",
+    "answer": "cloudy",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "cloudy",
+            "prob": 0.9621
+          },
+          {
+            "answer": "overcast",
+            "prob": 0.0159
+          },
+          {
+            "answer": "sunny",
+            "prob": 0.0089
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "cloudy",
+            "prob": 0.8804
+          },
+          {
+            "answer": "clear",
+            "prob": 0.0479
+          },
+          {
+            "answer": "overcast",
+            "prob": 0.0373
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo38.jpeg",
+    "question": "Is it sunny?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.7042
+          },
+          {
+            "answer": "yes",
+            "prob": 0.2956
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.6989
+          },
+          {
+            "answer": "no",
+            "prob": 0.2995
+          },
+          {
+            "answer": "blue",
+            "prob": 0.0003
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo38.jpeg",
+    "question": "What is the weather like?",
+    "answer": "sunny",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "cloudy",
+            "prob": 0.6981
+          },
+          {
+            "answer": "sunny",
+            "prob": 0.2677
+          },
+          {
+            "answer": "clear",
+            "prob": 0.0152
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "sunny",
+            "prob": 0.4771
+          },
+          {
+            "answer": "clear",
+            "prob": 0.3917
+          },
+          {
+            "answer": "cloudy",
+            "prob": 0.1214
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo39.jpg",
+    "question": "Is there grass in the photo?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.6826
+          },
+          {
+            "answer": "no",
+            "prob": 0.3171
+          },
+          {
+            "answer": "2",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5123
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4875
+          },
+          {
+            "answer": "green",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo39.jpg",
+    "question": "What is on the ground?",
+    "answer": "grass",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "grass",
+            "prob": 0.7252
+          },
+          {
+            "answer": "nothing",
+            "prob": 0.0318
+          },
+          {
+            "answer": "ball",
+            "prob": 0.0314
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "grass",
+            "prob": 0.8781
+          },
+          {
+            "answer": "dirt",
+            "prob": 0.0531
+          },
+          {
+            "answer": "leaves",
+            "prob": 0.0145
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo40.jpg",
+    "question": "Is this a tree?",
+    "answer": "yes",
+    "answer_type": "yes/no",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "yes",
+            "prob": 0.5437
+          },
+          {
+            "answer": "no",
+            "prob": 0.4561
+          },
+          {
+            "answer": "neither",
+            "prob": 0.0
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "no",
+            "prob": 0.5098
+          },
+          {
+            "answer": "yes",
+            "prob": 0.4896
+          },
+          {
+            "answer": "green",
+            "prob": 0.0
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo40.jpg",
+    "question": "What is this?",
+    "answer": "tree",
+    "answer_type": "other",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "kite",
+            "prob": 0.1826
+          },
+          {
+            "answer": "country",
+            "prob": 0.1339
+          },
+          {
+            "answer": "frisbee",
+            "prob": 0.111
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "kite",
+            "prob": 0.1488
+          },
+          {
+            "answer": "elephant",
+            "prob": 0.0989
+          },
+          {
+            "answer": "horse",
+            "prob": 0.075
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo41.jpg",
+    "question": "How many apples are there?",
+    "answer": "3",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.1802
+          },
+          {
+            "answer": "3",
+            "prob": 0.1692
+          },
+          {
+            "answer": "1",
+            "prob": 0.1597
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "3",
+            "prob": 0.2073
+          },
+          {
+            "answer": "4",
+            "prob": 0.1357
+          },
+          {
+            "answer": "5",
+            "prob": 0.1325
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo41.jpg",
+    "question": "How many bananas are there?",
+    "answer": "2",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.1677
+          },
+          {
+            "answer": "1",
+            "prob": 0.1647
+          },
+          {
+            "answer": "3",
+            "prob": 0.1621
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "3",
+            "prob": 0.1485
+          },
+          {
+            "answer": "1",
+            "prob": 0.1116
+          },
+          {
+            "answer": "4",
+            "prob": 0.1032
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo42.jpg",
+    "question": "How many books are there?",
+    "answer": "3",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.1324
+          },
+          {
+            "answer": "5",
+            "prob": 0.109
+          },
+          {
+            "answer": "2",
+            "prob": 0.0945
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "0",
+            "prob": 0.2011
+          },
+          {
+            "answer": "1",
+            "prob": 0.1981
+          },
+          {
+            "answer": "3",
+            "prob": 0.0853
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo42.jpg",
+    "question": "How many pens are there?",
+    "answer": "1",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.2548
+          },
+          {
+            "answer": "2",
+            "prob": 0.1877
+          },
+          {
+            "answer": "3",
+            "prob": 0.1452
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.4693
+          },
+          {
+            "answer": "2",
+            "prob": 0.2132
+          },
+          {
+            "answer": "0",
+            "prob": 0.1487
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo43.jpg",
+    "question": "How many forks are there?",
+    "answer": "1",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.2697
+          },
+          {
+            "answer": "3",
+            "prob": 0.2587
+          },
+          {
+            "answer": "5",
+            "prob": 0.1087
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.2921
+          },
+          {
+            "answer": "2",
+            "prob": 0.272
+          },
+          {
+            "answer": "0",
+            "prob": 0.2198
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo43.jpg",
+    "question": "How many spoons are there?",
+    "answer": "2",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.2823
+          },
+          {
+            "answer": "3",
+            "prob": 0.271
+          },
+          {
+            "answer": "1",
+            "prob": 0.106
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.3036
+          },
+          {
+            "answer": "1",
+            "prob": 0.2389
+          },
+          {
+            "answer": "0",
+            "prob": 0.1608
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo44.jpg",
+    "question": "How many chairs are there?",
+    "answer": "2",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.338
+          },
+          {
+            "answer": "3",
+            "prob": 0.1983
+          },
+          {
+            "answer": "1",
+            "prob": 0.1906
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.423
+          },
+          {
+            "answer": "2",
+            "prob": 0.2882
+          },
+          {
+            "answer": "3",
+            "prob": 0.1211
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo44.jpg",
+    "question": "How many pens are there?",
+    "answer": "1",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.2894
+          },
+          {
+            "answer": "1",
+            "prob": 0.2156
+          },
+          {
+            "answer": "3",
+            "prob": 0.196
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.4562
+          },
+          {
+            "answer": "2",
+            "prob": 0.2242
+          },
+          {
+            "answer": "0",
+            "prob": 0.1824
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo45.jpg",
+    "question": "How many spoons are there?",
+    "answer": "2",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.472
+          },
+          {
+            "answer": "2",
+            "prob": 0.2527
+          },
+          {
+            "answer": "0",
+            "prob": 0.1811
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.5316
+          },
+          {
+            "answer": "2",
+            "prob": 0.2766
+          },
+          {
+            "answer": "0",
+            "prob": 0.1395
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo45.jpg",
+    "question": "How many pens are there?",
+    "answer": "1",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.3047
+          },
+          {
+            "answer": "3",
+            "prob": 0.2303
+          },
+          {
+            "answer": "1",
+            "prob": 0.2265
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.494
+          },
+          {
+            "answer": "2",
+            "prob": 0.2729
+          },
+          {
+            "answer": "0",
+            "prob": 0.1173
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo46.jpg",
+    "question": "How many bottles are there?",
+    "answer": "2",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.2701
+          },
+          {
+            "answer": "3",
+            "prob": 0.2353
+          },
+          {
+            "answer": "5",
+            "prob": 0.1446
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "3",
+            "prob": 0.2273
+          },
+          {
+            "answer": "2",
+            "prob": 0.2049
+          },
+          {
+            "answer": "1",
+            "prob": 0.2037
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo46.jpg",
+    "question": "How many cups are there?",
+    "answer": "2",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.3735
+          },
+          {
+            "answer": "3",
+            "prob": 0.2109
+          },
+          {
+            "answer": "1",
+            "prob": 0.1764
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.3343
+          },
+          {
+            "answer": "2",
+            "prob": 0.2976
+          },
+          {
+            "answer": "3",
+            "prob": 0.1641
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo47.jpg",
+    "question": "How many pens are there?",
+    "answer": "2",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "3",
+            "prob": 0.1832
+          },
+          {
+            "answer": "5",
+            "prob": 0.1577
+          },
+          {
+            "answer": "2",
+            "prob": 0.1482
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.2973
+          },
+          {
+            "answer": "2",
+            "prob": 0.257
+          },
+          {
+            "answer": "3",
+            "prob": 0.1772
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo47.jpg",
+    "question": "How many pens are on plate?",
+    "answer": "0",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.1822
+          },
+          {
+            "answer": "1",
+            "prob": 0.1754
+          },
+          {
+            "answer": "3",
+            "prob": 0.1699
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.3
+          },
+          {
+            "answer": "2",
+            "prob": 0.2373
+          },
+          {
+            "answer": "3",
+            "prob": 0.155
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo48.jpg",
+    "question": "How many windows are there?",
+    "answer": "1",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.705
+          },
+          {
+            "answer": "0",
+            "prob": 0.1665
+          },
+          {
+            "answer": "2",
+            "prob": 0.0708
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.4214
+          },
+          {
+            "answer": "0",
+            "prob": 0.2779
+          },
+          {
+            "answer": "2",
+            "prob": 0.2077
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo48.jpg",
+    "question": "How many doors are there?",
+    "answer": "1",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.4129
+          },
+          {
+            "answer": "2",
+            "prob": 0.2183
+          },
+          {
+            "answer": "0",
+            "prob": 0.2074
+          }
+        ],
+        "correct": true
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.4074
+          },
+          {
+            "answer": "2",
+            "prob": 0.2478
+          },
+          {
+            "answer": "0",
+            "prob": 0.2294
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo49.jpg",
+    "question": "How many pillows are there?",
+    "answer": "3",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.3266
+          },
+          {
+            "answer": "3",
+            "prob": 0.2447
+          },
+          {
+            "answer": "4",
+            "prob": 0.1594
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "3",
+            "prob": 0.2076
+          },
+          {
+            "answer": "4",
+            "prob": 0.2002
+          },
+          {
+            "answer": "2",
+            "prob": 0.1636
+          }
+        ],
+        "correct": true
+      }
+    }
+  },
+  {
+    "image_filename": "photo49.jpg",
+    "question": "How many blankets are there?",
+    "answer": "1",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.4608
+          },
+          {
+            "answer": "1",
+            "prob": 0.2765
+          },
+          {
+            "answer": "3",
+            "prob": 0.161
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "2",
+            "prob": 0.3766
+          },
+          {
+            "answer": "1",
+            "prob": 0.2191
+          },
+          {
+            "answer": "3",
+            "prob": 0.1702
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo50.jpg",
+    "question": "How many oranges are there?",
+    "answer": "2",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "3",
+            "prob": 0.1943
+          },
+          {
+            "answer": "1",
+            "prob": 0.1906
+          },
+          {
+            "answer": "2",
+            "prob": 0.1718
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "1",
+            "prob": 0.2858
+          },
+          {
+            "answer": "2",
+            "prob": 0.2015
+          },
+          {
+            "answer": "3",
+            "prob": 0.1717
+          }
+        ],
+        "correct": false
+      }
+    }
+  },
+  {
+    "image_filename": "photo50.jpg",
+    "question": "How many apples are there?",
+    "answer": "2",
+    "answer_type": "number",
+    "predictions": {
+      "primary": {
+        "top3": [
+          {
+            "answer": "3",
+            "prob": 0.1877
+          },
+          {
+            "answer": "2",
+            "prob": 0.1714
+          },
+          {
+            "answer": "1",
+            "prob": 0.1662
+          }
+        ],
+        "correct": false
+      },
+      "baseline": {
+        "top3": [
+          {
+            "answer": "3",
+            "prob": 0.2351
+          },
+          {
+            "answer": "2",
+            "prob": 0.207
+          },
+          {
+            "answer": "1",
+            "prob": 0.206
+          }
+        ],
+        "correct": false
+      }
+    }
+  }
+]
