@@ -13,13 +13,13 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{positioning, arrows.meta, fit, backgrounds}
-\renewcommand{\arraystretch}{0.88}
+\renewcommand{\arraystretch}{0.8}
 \setlength{\abovecaptionskip}{3pt}
 \setlength{\belowcaptionskip}{0pt}
 \setlength{\textfloatsep}{6pt plus 2pt minus 2pt}
 \setlength{\floatsep}{4pt plus 2pt minus 2pt}
 \setlength{\intextsep}{4pt plus 2pt minus 2pt}
-\setlength{\parskip}{0.8pt plus 1pt minus 1pt}
+\setlength{\parskip}{0.4pt plus 1pt minus 1pt}
 
 \input{numbers_oliver.tex}
 
@@ -35,7 +35,7 @@
 
 \maketitle
 
-\vspace{-0.55in}
+\vspace{-0.68in}
 
 \section*{Introduction}
 
@@ -53,21 +53,19 @@ cost in the combined visual+text sequence length, instead of the linear-projecto
 approach used by connectors such as LLaVA \cite{liu2023visual}. We compare this directly against a
 control baseline that keeps the same frozen encoder but restores standard self-attention, and
 evaluate both on the full VQA v2.0 pool, a held-out test split, and a third dataset of newly
-collected photographs never used in tuning. \textbf{The result is a success on its own terms}: a
-\primaryTotalSize\ model that answers real visual questions well above chance, is essentially tied
-with a same-budget Transformer baseline on accuracy despite computing a much smaller attention-like
-operation over far fewer tokens, and -- because its cost stays fixed regardless of image
-resolution -- is cheap enough to run three times over for a decisive ensemble win.
+collected photographs never used in tuning. \textbf{The result}: a \primaryTotalSize\ model that
+answers real questions well above chance, ties a same-budget Transformer on accuracy despite a
+much smaller attention-like operation over far fewer tokens, and -- since its cost stays fixed
+regardless of resolution -- is cheap enough to run three times over for a decisive ensemble win.
 
 \section*{Data Processing}
 
 We use the official \textbf{VQA v2.0} dataset (questions/annotations over COCO images), processed
 in two steps to fit the 100MB budget: (1) collapse free-form answers to a \textbf{top-1000
 most-common-answer classification} problem, built from the frequency distribution over the full
-443{,}757-example train2014 pool (\vocabCoverage\ coverage), dropping examples outside that
-vocabulary; (2) resize/normalize images to $320\times320$ (upgraded
-from an initial $224\times224$ pass at progress-report time, after finding resolution was one of
-our biggest accuracy levers, Discussion) and pass them through the frozen vision encoder
+443{,}757-example train2014 pool (\vocabCoverage\ coverage), dropping examples outside vocabulary;
+(2) resize/normalize images to $320\times320$ (upgraded from $224\times224$ at progress-report
+time, our biggest accuracy lever, Discussion) and pass them through the frozen vision encoder
 \emph{once, offline}, caching the resulting $576\times10\times10$ FP16 feature map so training
 never re-runs the CNN.
 
@@ -91,17 +89,15 @@ Top-1000 answer coverage (train2014 pool) & \vocabCoverage \\
 \end{table}
 
 \textbf{Train/val/test split.} \texttt{train}/\texttt{val} are disjoint samples from the official
-\emph{train2014} pool, while \texttt{test} is sampled entirely from \emph{val2014} -- images and
-questions never seen during training or hyperparameter selection, our stand-in for
-``never-before-seen'' data. \textbf{A third, independent evaluation set} goes further: \newDataN\
-newly collected images (50 photos, 2 questions each -- a mix of pictures I took myself and
-pictures sourced from the internet, chosen to cover object categories and counting scenes not
-concentrated in COCO) with hand-written questions and answers, labelled and frozen \emph{before}
-any evaluation, never touched during model selection (Evaluate on New Data).
+\emph{train2014} pool, while \texttt{test} is sampled entirely from \emph{val2014} -- never seen
+during training or hyperparameter selection, our stand-in for ``never-before-seen'' data.
+\textbf{A third, independent evaluation set} goes further: \newDataN\ questions over 50 newly
+collected images -- half taken by hand, half sourced from the internet -- with hand-written
+questions/answers frozen \emph{before} any evaluation (Evaluate on New Data).
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\linewidth]{figures/bird_vision_latents.png}
+  \includegraphics[width=0.72\linewidth]{figures/bird_vision_latents.png}
   \caption{Unprocessed, processed, and encoded latent image, for the question ``What color is
   this bird?'' (answer class \texttt{white and brown}, one of the top-1000 answer classes). The
   latent panel is the frozen encoder's $576$-channel feature map mean-pooled to a single
@@ -110,39 +106,33 @@ any evaluation, never touched during model selection (Evaluate on New Data).
   \label{fig:sample}
 \end{figure}
 
-\textbf{Challenges.} Downloading and caching the full $\sim$123,000-image pool once was more
-reliable than smaller-scale per-image fetches, but not error-free: a batch of cached feature
-tensors was silently corrupted, spiking training loss until we added a feature-integrity check
-that now runs before every training job.
+\textbf{Challenges.} Caching the full $\sim$123,000-image pool once (vs.\ smaller per-image
+fetches) was more reliable, but not error-free: silently corrupted cached tensors once spiked
+training loss until we added a feature-integrity check that now runs before every training job.
 
 \section*{Background \& Related Work}
 
 Mini-VLM sits at the intersection of three lines of work. \textbf{Vision$\to$language
 connectors.} LLaVA \cite{liu2023visual} projects every patch token through one linear layer
-straight into the language model, so sequence length -- and attention cost -- grows with image
-resolution. Flamingo's Perceiver Resampler \cite{alayrac2022flamingo} instead learns a small fixed
-set of query tokens that cross-attend into the visual features, compressing a variable-size
-feature map to a constant-size summary; our RWKV Spatial Bridge shares this compression goal but
-replaces the cross-attention itself with a learned linear pooling matrix, avoiding attention
-entirely. BLIP-2's Q-Former \cite{li2023blip2} takes the cross-attention route further with a
-dedicated pretrained querying transformer -- exactly the mechanism we avoid on compute-cost and
-parameter-budget grounds. \textbf{Compact deployment and VQA itself.} MobileNetV3
-\cite{howard2019searching} targets exactly the mobile-inference regime we aim for and is our
-frozen backbone; GPTQ \cite{frantar2023gptq} motivates our planned weight-compression path for the
-bridge/core's Linear layers. VQA v2.0 \cite{goyal2017making} was built to reduce language-prior
-bias in the original VQA dataset, but Agrawal et al.\ \cite{agrawal2018dontjust} show such priors
-persist -- motivating the question-only ablation below (\blindFloor\ accuracy from vision-blind
-inputs), which quantifies how much of our accuracy really comes from the image. \textbf{Classic
-(non-web-pretrained) VQA SOTA.} Bottom-up-top-down attention \cite{anderson2018bottomup}, MCAN
-\cite{yu2019deep}, and BAN \cite{kim2018bilinear} reach 66--73\% on VQA v2.0 alone -- a different
-weight class, not a like-for-like comparison. They pair co-attention (which we deliberately avoid)
-with \emph{bottom-up region features} from a separately-trained Faster R-CNN detector
-($\sim$44M params alone, larger than our entire model), and Pythia \cite{jiang2018pythia} traces
-roughly half their further gain to \emph{fine-tuning} those features end-to-end -- exactly what
-our frozen, offline-cached, sub-100MB design forgoes by design. They also use VQA's official soft
-accuracy (partial credit when only some of 10 annotators agree), while we score stricter top-1
-exact-match on the same predictions -- one more reason these numbers describe a differently-scoped
-system, not a shortfall on our part.
+straight into the language model, so cost grows with image resolution. Flamingo's Perceiver
+Resampler \cite{alayrac2022flamingo} instead learns a small fixed set of query tokens that
+cross-attend into the visual features, compressing to a constant-size summary; our RWKV Spatial
+Bridge shares this compression goal but replaces the cross-attention itself with a learned linear
+pooling matrix. BLIP-2's Q-Former \cite{li2023blip2} takes cross-attention further with a
+dedicated pretrained querying transformer -- exactly what we avoid on compute-cost grounds.
+\textbf{Compact deployment and VQA itself.} MobileNetV3 \cite{howard2019searching} is our frozen
+backbone; GPTQ \cite{frantar2023gptq} motivates a planned weight-compression path. VQA v2.0
+\cite{goyal2017making} reduced language-prior bias in the original dataset, but Agrawal et al.\
+\cite{agrawal2018dontjust} show such priors persist -- motivating the question-only ablation below
+(\blindFloor\ from vision-blind inputs). \textbf{Classic (non-web-pretrained) VQA SOTA.}
+Bottom-up-top-down attention \cite{anderson2018bottomup}, MCAN \cite{yu2019deep}, and BAN
+\cite{kim2018bilinear} reach 66--73\% on VQA v2.0 alone -- a different weight class: they pair
+co-attention (which we avoid) with \emph{bottom-up region features} from a separately-trained
+Faster R-CNN detector ($\sim$44M params, larger than our entire model), and Pythia
+\cite{jiang2018pythia} traces roughly half their further gain to \emph{fine-tuning} those
+features -- both out of scope for our frozen, sub-100MB design. They also use VQA's official soft
+accuracy versus our stricter top-1 exact-match -- another reason these numbers describe a
+differently-scoped system, not a shortfall on our part.
 
 \section*{Primary Model}
 
@@ -150,8 +140,8 @@ system, not a shortfall on our part.
   \centering
   \resizebox{\linewidth}{!}{%
   \begin{tikzpicture}[
-      node distance=5mm and 6mm,
-      box/.style={draw, rounded corners, align=center, minimum height=0.8cm, font=\scriptsize},
+      node distance=3mm and 5mm,
+      box/.style={draw, rounded corners, align=center, minimum height=0.65cm, font=\scriptsize},
       frozen/.style={box, dashed, fill=gray!10},
       primary/.style={box, fill=blue!10},
       shared/.style={box, fill=gray!20},
@@ -161,7 +151,7 @@ system, not a shortfall on our part.
     \node[frozen, right=of img] (enc) {Frozen MobileNetV3\\FP16 (1.87MB)};
     \node[shared, right=of enc] (tok) {100 patch tokens\\$[576,10,10]$};
 
-    \node[box, below=1cm of enc] (q) {Question};
+    \node[box, below=7mm of enc] (q) {Question};
     \node[shared, right=of q] (qtok) {Word embeddings\\(learned tokenizer)};
 
     \node[primary, right=of tok] (bridge) {RWKV Spatial Bridge\\2 RWKV blocks\\question-cond.\ pool $100\to16$};
@@ -186,32 +176,25 @@ system, not a shortfall on our part.
 \end{figure}
 
 \textbf{Vision encoder.} MobileNetV3-Small, compressed FP32$\to$FP16 (3.66MB $\to$ 1.87MB); INT8
-post-training static quantization hit an operator-support gap (MobileNetV3's Squeeze-and-Excite
-blocks need a quantized elementwise multiply unimplemented in this environment's quantized-CPU
-kernels), so FP16 is used as a reliable substitute, with INT8/GPTQ \cite{frantar2023gptq}
-remaining a concrete next step.
+static quantization hit an operator-support gap (unimplemented quantized elementwise multiply for
+Squeeze-and-Excite), so FP16 substitutes, with INT8/GPTQ \cite{frantar2023gptq} a concrete next
+step.
 
-\textbf{RWKV Spatial Bridge.} Uses RWKV time-mixing (WKV linear-time recurrence, custom CUDA
-kernel for GPU, numerically verified against a pure-Python reference to a maximum
-output/gradient difference under $10^{-6}$ at sequence lengths up to 1024) and channel-mixing
-(squared-ReLU FFN). It flattens the $576\times10\times10$ feature map into 100 tokens, projects to
-$d_{model}=128$, runs 2 RWKV blocks, then compresses to \primaryTunedK\ language-aligned tokens
-via a \emph{learned linear pooling matrix} (softmax-normalized weights, not cross-attention). The
-pooling weights are \textbf{question-conditioned}: a small MLP ($+$\qCondExtraParams\ params)
-reads a mean-pooled question embedding and predicts a per-example adjustment to the pooling
-matrix, so which spatial positions each of the $K$ tokens draws from can shift with the question
--- a lightweight, linear-time echo of what co-attention buys the larger systems in Background,
-without any image-token$\times$question-token dot products. This was the single most effective
-addition we tried (Discussion); multi-head-style pooling and a residual global-context token,
-tried alongside it, did not improve on it.
+\textbf{RWKV Spatial Bridge.} Uses RWKV time-mixing (linear-time recurrence, custom CUDA kernel,
+verified against a pure-Python reference to $10^{-6}$ at sequence lengths up to 1024) and
+channel-mixing (squared-ReLU FFN). Flattens the $576\times10\times10$ feature map into 100 tokens,
+projects to $d_{model}=128$, runs 2 RWKV blocks, then compresses to \primaryTunedK\ tokens via a
+\emph{learned linear pooling matrix} (softmax weights, not cross-attention). The pooling is
+\textbf{question-conditioned}: a small MLP ($+$\qCondExtraParams\ params) reads a mean-pooled
+question embedding and predicts a per-example adjustment to the pooling matrix, so which spatial
+positions each token draws from can shift with the question -- a linear-time echo of co-attention's
+benefit (Background) with no image$\times$question dot products, and the single most effective
+addition we tried (Discussion).
 
 \textbf{RWKV Language Core.} The 16 visual tokens concatenate with the question's word embeddings
-(\primaryTunedTokenOrder\ order) through a 4-layer RWKV stack (dropout \primaryTunedDropout,
-weight decay \primaryTunedWeightDecay, lr \primaryTunedLR, word-dropout
-\primaryTunedWordDropout\ in training only -- tuned over several rounds, Discussion), pooling mode
-\primaryTunedPool; the final hidden state feeds a linear classifier over 1000 answers. Total:
-\textbf{\primaryParams\ parameters}, \primarySize\ -- with the 1.87MB FP16 encoder, a
-\textbf{\primaryTotalSize} deployed model, comfortably inside the 100MB budget.
+(\primaryTunedTokenOrder\ order) through a 4-layer RWKV stack; the final hidden state feeds a
+linear classifier over 1000 answers. Total: \textbf{\primaryParams\ parameters}, \primarySize\ --
+with the 1.87MB FP16 encoder, a \textbf{\primaryTotalSize} deployed model.
 
 \section*{Baseline Model}
 
@@ -219,8 +202,8 @@ weight decay \primaryTunedWeightDecay, lr \primaryTunedLR, word-dropout
   \centering
   \resizebox{\linewidth}{!}{%
   \begin{tikzpicture}[
-      node distance=5mm and 6mm,
-      box/.style={draw, rounded corners, align=center, minimum height=0.8cm, font=\scriptsize},
+      node distance=3mm and 5mm,
+      box/.style={draw, rounded corners, align=center, minimum height=0.65cm, font=\scriptsize},
       frozen/.style={box, dashed, fill=gray!10},
       base/.style={box, fill=orange!12},
       shared/.style={box, fill=gray!20},
@@ -230,7 +213,7 @@ weight decay \primaryTunedWeightDecay, lr \primaryTunedLR, word-dropout
     \node[frozen, right=of img] (enc) {Frozen MobileNetV3\\FP16 (1.87MB)};
     \node[shared, right=of enc] (tok) {100 patch tokens\\$[576,10,10]$};
 
-    \node[box, below=1cm of enc] (q) {Question};
+    \node[box, below=7mm of enc] (q) {Question};
     \node[shared, right=of q] (qtok) {Word embeddings\\(learned tokenizer)};
 
     \node[base, right=of tok] (proj) {Linear Projector\\(all 100 tokens, no compression)};
@@ -257,19 +240,16 @@ same frozen vision encoder, cached features, data splits, optimizer family, and 
 primary model, differing only in how the two token streams are compressed and mixed -- a plain
 \textbf{Linear Projector} maps all 100 spatial patch tokens (no compression) into a standard,
 unshared \texttt{nn.TransformerEncoder} alongside the question's word embeddings. At a comparable
-parameter count (\baselineParams\ vs.\ \primaryParams) it is a real architecture, not a strawman.
-Every \emph{data-level} change (resolution) is applied identically to both models for this reason;
-every RWKV-specific architectural change (bridge depth, pooling heads, the global-context token,
-question-conditioned pooling) is primary-only, since the baseline's Transformer already gets
-question-awareness for free from its own self-attention. \textbf{Reproducible specification:}
+parameter count (\baselineParams\ vs.\ \primaryParams) it is a real architecture, not a strawman;
+every \emph{data-level} change (resolution) is applied identically to both models, while
+RWKV-specific architectural changes are primary-only, since the baseline's Transformer already
+gets question-awareness for free from its own self-attention. \textbf{Specification:}
 $\mathrm{Linear}(576\to128)$ over all 100 flattened patch tokens; a learned positional embedding
-over $100+T_q$ positions; word embeddings from the training-set tokenizer;
-\texttt{nn.TransformerEncoder}, 4 layers, 4 heads, $d_{model}=128$, feedforward width 512,
-\textbf{pre-LN} (\texttt{norm\_first=True}) -- required because post-LN produced loss spikes and
-NaNs when training from scratch at $lr=3\times10^{-3}$; a final \texttt{LayerNorm} on the readout
-token, then $\mathrm{Linear}(128\to1000)$; softmax cross-entropy loss. \textbf{Tuning protocol:}
-the same six-configuration, validation-loss-selected search as the primary's first round (dropout,
-weight decay, depth, learning rate) picked a lower learning rate (\baselineTunedLR\ vs.\
+over $100+T_q$ positions; \texttt{nn.TransformerEncoder}, 4 layers, 4 heads, $d_{model}=128$,
+feedforward width 512, pre-LN (\texttt{norm\_first=True}, needed to avoid loss spikes/NaNs at
+$lr=3\times10^{-3}$); a final \texttt{LayerNorm} then $\mathrm{Linear}(128\to1000)$; softmax
+cross-entropy loss. \textbf{Tuning:} the same six-configuration, validation-loss-selected search
+as the primary's first round picked a lower learning rate (\baselineTunedLR\ vs.\
 $3\times10^{-3}$); dropout/weight decay stayed at defaults (\baselineTunedDropout,
 \baselineTunedWeightDecay). \textbf{Results:} \textbf{\baselineTestAcc} test accuracy
 ($\pm$\baselineTestAccStd, 3 seeds, \baselineParams\ params, \baselineSize), loss
@@ -306,28 +286,26 @@ evaluation below (Evaluate on New Data).}
 \section*{Quantitative Results}
 
 Single-seed test accuracy is essentially matched (\primaryTestAcc\ vs.\ \baselineTestAcc, 3-seed
-means -- within each other's noise), and the \textbf{3-seed ensemble} of primary
-(\ensembleTestAcc, no retraining, just soft-voting the three already-trained seeds) turns that
-parity into a clear lead of \textbf{+\ensembleGainOverBaseline pp} over baseline -- both
-comfortably inside the 100MB budget (\ensembleSize\ vs.\ \baselineSize). This makes sense given the
-architectures involved: primary computes a much smaller attention-like operation, over
-\primaryTunedK\ compressed tokens instead of baseline's 100, yet still lands in the same
-accuracy range -- and, ensembled, ahead of it. Per-type (Table~\ref{tab:comparison}), primary
-leads on two of three answer types: yes/no (\primaryAccYN\ vs.\ \baselineAccYN) and number
-(\primaryAccNum\ vs.\ \baselineAccNum) -- and has closed most of the remaining gap on ``other''
-(\primaryAccOther\ vs.\ \baselineAccOther). A sweep over $K$ (Figure~\ref{fig:curves}, right)
-shows accuracy rising $K{=}4{\to}16$, confirming the bridge's compression step was a real
-bottleneck -- $K{=}32$ alone doesn't help further, but resolution and question-conditioned
-pooling did. Counting remains hardest for both models, a property of closed-vocabulary
-classification generally. The blind floor (\blindFloor) quantifies accuracy attributable to
-language priors alone \cite{agrawal2018dontjust}.
+means), and the \textbf{3-seed ensemble} of primary (\ensembleTestAcc, no retraining, just
+soft-voting the three already-trained seeds) turns that parity into a clear lead of
+\textbf{+\ensembleGainOverBaseline pp} over baseline -- both comfortably inside the 100MB budget
+(\ensembleSize\ vs.\ \baselineSize). This makes sense architecturally: primary computes a much
+smaller attention-like operation, over \primaryTunedK\ tokens instead of baseline's 100, yet still
+matches it -- and, ensembled, beats it. Per-type (Table~\ref{tab:comparison}), primary leads on
+yes/no (\primaryAccYN\ vs.\ \baselineAccYN) and number (\primaryAccNum\ vs.\ \baselineAccNum), and
+has closed most of the gap on ``other'' (\primaryAccOther\ vs.\ \baselineAccOther). A sweep over
+$K$ (Figure~\ref{fig:curves}, right) shows accuracy rising $K{=}4{\to}16$, confirming the bridge's
+compression was a real bottleneck -- $K{=}32$ alone doesn't help further, but resolution and
+question-conditioned pooling did. Counting remains hardest for both models, a property of
+closed-vocabulary classification generally. The blind floor (\blindFloor) quantifies accuracy
+attributable to language priors alone \cite{agrawal2018dontjust}.
 
 \begin{figure}[!htbp]
   \centering
-  \begin{minipage}{0.43\linewidth}
+  \begin{minipage}{0.37\linewidth}
     \includegraphics[width=\linewidth]{figures/comparison_curves.png}
   \end{minipage}\hfill
-  \begin{minipage}{0.43\linewidth}
+  \begin{minipage}{0.37\linewidth}
     \includegraphics[width=\linewidth]{figures/k_sweep_curve.png}
   \end{minipage}
   \caption{Left: baseline vs.\ primary validation loss/accuracy across training. Right: primary
@@ -338,18 +316,16 @@ language priors alone \cite{agrawal2018dontjust}.
 
 \section*{Qualitative Results}
 
-Figure~\ref{fig:qualitative} shows four hand-selected held-out examples chosen to cover the
-interesting cases, not a random sample: one both models answer correctly, one only primary gets
-right, one only baseline gets right, and one both get wrong. When primary is confident on a
-yes/no question it tends to be right; on harder ``other'' questions it occasionally lands on a
-confident but wrong answer, consistent with a frozen encoder and a handful of compressed tokens
-sometimes losing detail needed to localize a specific object. The baseline's failure mode looks
-different: lower peak confidence but a more even hit rate across open-ended questions, matching
-its retained fine-grained detail.
+Figure~\ref{fig:qualitative} shows four hand-selected held-out examples, not a random sample: one
+both models answer correctly, one only primary gets right, one only baseline gets right, one both
+get wrong. Primary confident on yes/no tends to be right; on harder ``other'' questions it can be
+confidently wrong, consistent with a frozen encoder and few compressed tokens losing detail needed
+to localize an object. Baseline's failure mode differs: lower peak confidence but a more even hit
+rate across open-ended questions, matching its retained fine-grained detail.
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.34\linewidth]{figures/qualitative_grid_final.png}
+  \includegraphics[width=0.27\linewidth]{figures/qualitative_grid_final.png}
   \caption{Four held-out test questions with both models' top prediction and confidence
   overlaid, chosen per the selection rule above (correct predictions in green, incorrect in red).}
   \label{fig:qualitative}
@@ -359,65 +335,42 @@ its retained fine-grained detail.
 
 Beyond the official COCO test split, we built a \textbf{third, independent evaluation set}:
 \newDataN\ questions over 50 newly collected images, half photographed by hand and half sourced
-from the internet, covering object categories and exact-count counting scenes chosen to stress
-both answer types the official split under-represents locally. Questions and ground-truth answers
-were written and frozen \emph{before} any model saw them, and evaluated exactly once -- no
-hyperparameter was touched afterward. Against a \newDataMajorityFloor\ majority floor, primary
-reaches \textbf{\newDataPrimaryAcc} (95\% CI \newDataPrimaryCI) and baseline
-\textbf{\newDataBaselineAcc} (95\% CI \newDataBaselineCI) -- primary ahead by 3 points overall,
-and by a wider margin on yes/no (\newDataPrimaryYN\ vs.\ \newDataBaselineYN) and ``other''
-(\newDataPrimaryOther\ vs.\ \newDataBaselineOther), with baseline only slightly ahead on counting
-(\newDataBaselineNum\ vs.\ \newDataPrimaryNum). The confidence intervals overlap substantially at
-$n{=}100$, so this isn't a statistically decisive win on its own, but it's consistent with --
-not contradicted by -- the official test set's story: primary holds up on genuinely novel images,
-including ones it (and the frozen encoder) have never encountered before.
+from the internet, covering object categories and exact-count counting scenes the official split
+under-represents locally. Questions and ground-truth answers were written and frozen \emph{before}
+any model saw them, and evaluated exactly once -- no hyperparameter was touched afterward. Against
+a \newDataMajorityFloor\ majority floor, primary reaches \textbf{\newDataPrimaryAcc} (95\% CI
+\newDataPrimaryCI) and baseline \textbf{\newDataBaselineAcc} (95\% CI \newDataBaselineCI) --
+primary ahead overall, and by a wider margin on yes/no (\newDataPrimaryYN\ vs.\
+\newDataBaselineYN) and ``other'' (\newDataPrimaryOther\ vs.\ \newDataBaselineOther), with
+baseline only slightly ahead on counting (\newDataBaselineNum\ vs.\ \newDataPrimaryNum). The
+confidence intervals overlap substantially at $n{=}100$, so this isn't a statistically decisive
+win alone, but it's consistent with the official test set's story: primary holds up on genuinely
+novel images neither model (nor the frozen encoder) has ever seen.
 
 \section*{Discussion}
 
-\textbf{The model is a success on its own terms.} At \primaryTestAcc\ single-seed
-(\ensembleTestAcc\ ensembled) against a \majorityFloor\ majority floor and a \blindFloor\ blind
-floor, both models answer real visual questions well above chance in \primaryTotalSize\ or less --
-and primary does it while computing a linear-time operation over \primaryTunedK\ tokens instead of
-baseline's full self-attention over 100. That primary lands in the same accuracy range as
-baseline, and pulls ahead once ensembled, despite doing meaningfully \emph{less} computation per
-token, is the headline result: a smaller, cheaper attention-like mechanism does not have to cost
-accuracy. \textbf{How we got there:} hyperparameter tuning found a stable recipe (dropout
-\primaryTunedDropout, lr \primaryTunedLR, word-dropout \primaryTunedWordDropout,
-\primaryTunedTokenOrder\ order); a search across \phaseOneAxesTried\ further architectural axes
-(bridge depth, pooling design, embeddings, sampling) ruled out easy wins and, via the $K$-sweep
-(Figure~\ref{fig:curves}), confirmed the bridge's compression step was the real lever. Two changes
-then closed the remaining gap: re-caching at \primaryResolution\ gave the bridge richer raw
-material (100 tokens instead of 49), and question-conditioned pooling (Primary Model) let the
-model choose which regions matter per-question -- the single biggest win of this round. Together
-they took primary from trailing baseline by close to a point at progress-report time to
-essentially matching it single-seed, and to a decisive lead once ensembled
-(+\ensembleGainOverBaseline pp). \textbf{Why the ensemble is more than a trick:} primary's core
-cost is resolution-\emph{independent} (only $K$ tokens reach it), so the resolution bump that
-unlocked the accuracy gain didn't also inflate its per-example cost the way it does baseline's --
-exactly what makes running it three times over for an ensemble cheap. That same design pays off
-directly once sequences get longer: primary still trails baseline at VQA's $\sim$6-word questions
-(launch overhead dominates before $O(T)$ helps), but the crossover arrives at
-$T_q{\approx}$\crossoverTq\ (\crossoverSpeedup\ faster by $T_q{=}1000$), accuracy flat from
-\longctxOneXAcc\ to \longctxSixteenXAcc. \textbf{Where classic VQA systems still lead}
-(Background) comes from a different budget -- a $\sim$44M-parameter detector plus full visual
-fine-tuning, both out of scope here -- so our numbers describe what's achievable inside a much
-smaller budget, not a shortfall. A GRU decoder and a wider vocabulary were also tried and did not
-clearly help. \textbf{New data confirms the pattern}: primary leads on our self-collected/internet
-third dataset too (\newDataPrimaryAcc\ vs.\ \newDataBaselineAcc), consistent with -- not just
-specific to -- the official test set. \textbf{Overall}: within a strict 100MB budget, with a
-frozen encoder and no attention in the vision-language path, Mini-VLM reaches competitive accuracy
-against a same-budget attention baseline, beats it once ensembled, and is architecturally
-positioned to get faster still as question length grows -- a genuinely successful outcome for the
-constraints we set out to work within.
-
-\section*{Ethical Considerations}
-
-Our blind ablation (\blindFloor) confirms both models rely on real visual grounding, not just
-language priors \cite{agrawal2018dontjust} -- a good fit for blind/low-vision assistance at
-\primaryTotalSize\ or less, where a confident answer beats none. Imagery for training/testing is
-COCO (standard research license); the new third-dataset imagery is a mix of our own photographs
-(ours to use) and internet-sourced pictures used here strictly for non-commercial, personal
-academic evaluation, not redistributed as a dataset.
+\textbf{A success on its own terms.} Both models answer real visual questions well above chance in
+\primaryTotalSize\ or less, and primary matches baseline's accuracy -- beating it once ensembled
+-- while computing a linear-time operation over just \primaryTunedK\ tokens instead of baseline's
+full self-attention over 100: a smaller, cheaper mechanism that doesn't cost accuracy. That's
+non-trivial given no off-the-shelf framework provides an RWKV CUDA kernel, so building and
+numerically verifying one from scratch was a real part of this project's difficulty. \textbf{How
+we got there:} a stable hyperparameter recipe plus a search across \phaseOneAxesTried\ further
+architectural axes (bridge depth, pooling design, embeddings, sampling) ruled out easy wins, and
+the $K$-sweep (Figure~\ref{fig:curves}) confirmed the bridge's compression was the real lever;
+re-caching at \primaryResolution\ and question-conditioned pooling (Primary Model) then closed
+the gap: a decisive lead once ensembled (+\ensembleGainOverBaseline pp). Primary's core cost is
+resolution-\emph{independent} (only $K$ tokens reach it), so that resolution bump didn't inflate
+its per-example cost the way it does baseline's -- why ensembling it is cheap, and why it trails
+baseline only at short questions (the crossover to \emph{faster} arrives at
+$T_q{\approx}$\crossoverTq). Classic VQA systems reaching higher (Background) do so from a
+different budget -- a $\sim$44M-parameter detector plus full fine-tuning, out of scope here --
+describing a smaller budget's ceiling, not a shortfall. New data confirms the pattern
+(\newDataPrimaryAcc\ vs.\ \newDataBaselineAcc). \textbf{Ethical Considerations:} our blind
+ablation (\blindFloor) confirms real visual grounding, not just priors
+\cite{agrawal2018dontjust} -- fitting for blind/low-vision assistance at \primaryTotalSize.
+Imagery is COCO (research license) plus our own/internet photographs, used only for
+non-commercial evaluation.
 
 \newpage
 \bibliographystyle{plain}
